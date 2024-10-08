@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: f91076dd1d480644a982dcaa25fc4af7, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 484270cc371e11446809dbbe61cf6bd9, type: 3}
   m_Color: {r: 0.6037736, g: 0.15663938, b: 0.1695096, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,3 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cannonballPrefab: {fileID: 4037478991112029535, guid: 5144063cdd81b14469e3f4eed5ea40d5, type: 3}
+  _cooldown: 0
