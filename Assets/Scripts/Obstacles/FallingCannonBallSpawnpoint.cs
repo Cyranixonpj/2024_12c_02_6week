@@ -6,12 +6,10 @@ public class FallingCannonBallSpawnpoint : MonoBehaviour
 {
     [SerializeField] private GameObject _fallingCannonballPrefab;
     [SerializeField] private float _cooldown;
-
     private void Start()
     {
         StartCoroutine(Falling());
-    }
-    
+    } 
     private IEnumerator Falling()
     {
         while (true)

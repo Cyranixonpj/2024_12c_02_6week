@@ -22,7 +22,6 @@ public class CollapsingPlatform : MonoBehaviour
         }
         
     }
-    
     private IEnumerator Opening()
     {
         while (true)
@@ -33,7 +32,5 @@ public class CollapsingPlatform : MonoBehaviour
             yield return new WaitForSeconds(closeAgainCooldown);
             bxCol.enabled = true;
         }
-        
-
     }
 }
