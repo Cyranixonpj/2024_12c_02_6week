@@ -6,8 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private float _xInput;
     private bool _isGrounded;
-    private bool _performedJump;
-    
+   
     [SerializeField] private float JumpForce = 5;
     [SerializeField] private float Speed = 5;
 
@@ -23,7 +22,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
-            _performedJump = true;
+            
+            _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
+        }
+        if(Input.GetButtonUp("Jump") && _rb.velocity.y > 0)
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
         }
     }
     
@@ -42,10 +46,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _rb.velocity = new Vector2(_xInput * Speed, _rb.velocity.y);
-        if (_performedJump)
-        {
-            _performedJump = false;
-            _rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-        }
+
     }
 }
