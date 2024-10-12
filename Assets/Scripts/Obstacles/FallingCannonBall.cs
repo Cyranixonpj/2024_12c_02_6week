@@ -1,22 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingCannonBall : MonoBehaviour
+namespace Obstacles
 {
-    [SerializeField] private float _speed;
-    private Rigidbody2D _rb;
-    private void Awake()
+    public class FallingCannonBall : MonoBehaviour
     {
-        _rb = GetComponent<Rigidbody2D>();
-    } 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        [SerializeField] private float _speed;
+        private Rigidbody2D _rb;
+        private void Awake()
         {
-            Destroy(other.gameObject);
+            _rb = GetComponent<Rigidbody2D>();
+        } 
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                Destroy(other.gameObject);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
-    }
     
+    }
 }

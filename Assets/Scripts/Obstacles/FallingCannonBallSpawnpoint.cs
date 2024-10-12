@@ -1,22 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingCannonBallSpawnpoint : MonoBehaviour
+namespace Obstacles
 {
-    [SerializeField] private GameObject _fallingCannonballPrefab;
-    [SerializeField] private float _cooldown;
-    private void Start()
+    public class FallingCannonBallSpawnpoint : MonoBehaviour
     {
-        StartCoroutine(Falling());
-    } 
-    private IEnumerator Falling()
-    {
-        while (true)
+        [SerializeField] private GameObject _fallingCannonballPrefab;
+        [SerializeField] private float _cooldown;
+        private void Start()
         {
-            Instantiate(_fallingCannonballPrefab, transform.position, transform.rotation);
-            yield return new WaitForSeconds(_cooldown);
+            StartCoroutine(Falling());
+        } 
+        private IEnumerator Falling()
+        {
+            while (true)
+            {
+                Instantiate(_fallingCannonballPrefab, transform.position, transform.rotation);
+                yield return new WaitForSeconds(_cooldown);
             
+            }
         }
     }
 }

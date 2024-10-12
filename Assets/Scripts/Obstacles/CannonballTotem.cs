@@ -1,33 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Cannonball : MonoBehaviour
+namespace Obstacles
 {
-    [SerializeField] private float _speed;
-    private Rigidbody2D _rb; 
-    private void Awake()
+    public class Cannonball : MonoBehaviour
     {
-        _rb = GetComponent<Rigidbody2D>();
-    }
-    private void Start()
-    {
-        _rb.velocity = transform.right * _speed;
-    } 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        [SerializeField] private float _speed;
+        private Rigidbody2D _rb; 
+        private void Awake()
         {
-             Destroy(other.gameObject);
+            _rb = GetComponent<Rigidbody2D>();
         }
-        Destroy(gameObject);
+        private void Start()
+        {
+            _rb.velocity = transform.right * _speed;
+        } 
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                Destroy(other.gameObject);
+            }
+            Destroy(gameObject);
         
-    }
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
+        }
+        private void OnBecameInvisible()
+        {
+            Destroy(gameObject);
+        }
     }
 }
 
