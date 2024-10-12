@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private float _xInput;
     private bool _isGrounded;
     private bool _doubleJump;
+    private bool _isFacingRight = true;
 
     [SerializeField] private float JumpForce = 5;
     [SerializeField] private float Speed = 5;
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
         }
+        Flip();
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -54,4 +56,16 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.velocity = new Vector2(_xInput * Speed, _rb.velocity.y);
     }
+    private void Flip()
+    {
+        if (_isFacingRight && _xInput < 0 || !_isFacingRight && _xInput > 0)
+        {
+            _isFacingRight = !_isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1;
+            transform.localScale = localScale;
+        }
+    }
+
+    
 }
