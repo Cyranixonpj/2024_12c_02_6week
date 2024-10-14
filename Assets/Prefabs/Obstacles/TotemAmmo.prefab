@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8537805673458437085}
   - component: {fileID: 7479226716503443894}
   m_Layer: 0
-  m_Name: CannonballPrefabRight
+  m_Name: TotemAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

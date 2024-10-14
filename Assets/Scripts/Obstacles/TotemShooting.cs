@@ -8,7 +8,7 @@ namespace Obstacles
 {
     public class TotemShooting : MonoBehaviour
     {
-        [SerializeField] private GameObject _cannonballPrefab;
+        [SerializeField] private GameObject _totemAmmoPrefab;
         [SerializeField] private float _cooldown;
         private void Start()
         {
@@ -18,7 +18,7 @@ namespace Obstacles
         {
             while (true)
             {
-                Instantiate(_cannonballPrefab, transform.position, transform.rotation);
+                Instantiate(_totemAmmoPrefab, transform.position, transform.rotation);
                 yield return new WaitForSeconds(_cooldown);
                 
             }

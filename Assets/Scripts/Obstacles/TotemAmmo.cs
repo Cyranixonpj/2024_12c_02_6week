@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Obstacles
 {
-    public class Cannonball : MonoBehaviour
+    public class TotemAmmo : MonoBehaviour
     {
         [SerializeField] private float _speed;
         private Rigidbody2D _rb; 
