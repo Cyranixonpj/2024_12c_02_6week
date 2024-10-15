@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
     private bool _doubleJump;
     private bool _isFacingRight = true;
+    private float _coyoteTime = 0.2f;
+    private float _coyoteCounter;
+        
 
     [SerializeField] private float JumpForce = 5;
     [SerializeField] private float Speed = 5;
@@ -20,15 +23,25 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         _xInput = Input.GetAxis("Horizontal");
+        
+        if(_isGrounded)
+        {
+            _coyoteCounter = _coyoteTime;
+        }
+        else
+        {
+            _coyoteCounter -= Time.deltaTime;
+        }
+        
 
-        if (_isGrounded && !Input.GetButton("Jump"))
+        if (_coyoteCounter > 0f && !Input.GetButton("Jump"))
         {
             _doubleJump = false;
         }
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (_isGrounded || _doubleJump)
+            if (_coyoteCounter > 0f || _doubleJump)
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
                 _doubleJump = !_doubleJump;
@@ -38,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump") && _rb.velocity.y > 0)
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
+            _coyoteCounter = 0f;
         }
         Flip();
     }
