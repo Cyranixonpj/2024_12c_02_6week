@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6098653720718616499}
   m_Layer: 0
   m_Name: EnemyPrefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,3 +174,4 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 0}
   _pointA: {fileID: 0}
   _pointB: {fileID: 0}
+  _speed: 0
