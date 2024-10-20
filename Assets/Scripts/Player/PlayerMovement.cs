@@ -4,29 +4,40 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
+    private Animator _anim;
     private float _xInput;
     private bool _isGrounded;
     private bool _doubleJump;
     private bool _isFacingRight = true;
     private float _coyoteTime = 0.1f;
     private float _coyoteCounter;
-    private float _jumpBufferTime = 0.2f;
-    private float _jumpBufferCounter;
-    
+
 
     [SerializeField] private float JumpForce = 5;
     [SerializeField] private float Speed = 5;
 
     private void Awake()
     {
+        //Grab references
         _rb = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
         _xInput = Input.GetAxis("Horizontal");
-        
-        if(_isGrounded)
+
+        Jump();
+        Flip();
+
+        _anim.SetBool("run", _xInput != 0);
+        _anim.SetBool("fall", _rb.velocity.y < 0 && _coyoteCounter > 0f);
+        _anim.SetBool("touchedGround", _coyoteCounter > 0f);
+    }
+
+    private void Jump()
+    {
+        if (_isGrounded)
         {
             _coyoteCounter = _coyoteTime;
         }
@@ -34,15 +45,18 @@ public class PlayerMovement : MonoBehaviour
         {
             _coyoteCounter -= Time.deltaTime;
         }
-        
+
 
         if (_coyoteCounter > 0f && !Input.GetButton("Jump"))
         {
             _doubleJump = false;
         }
 
+
         if (Input.GetButtonDown("Jump"))
         {
+            _anim.SetTrigger("jump");
+
             if (_coyoteCounter > 0f || _doubleJump)
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
@@ -55,23 +69,31 @@ public class PlayerMovement : MonoBehaviour
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
             _coyoteCounter = 0f;
         }
-        Flip();
+
+        _anim.SetBool("grounded", _coyoteCounter > 0f);
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        _isGrounded = false;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        _isGrounded = true;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = true;
+        }
     }
 
     private void FixedUpdate()
     {
         _rb.velocity = new Vector2(_xInput * Speed, _rb.velocity.y);
     }
+
     private void Flip()
     {
         if (_isFacingRight && _xInput < 0 || !_isFacingRight && _xInput > 0)
@@ -82,6 +104,4 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-
-    
 }
