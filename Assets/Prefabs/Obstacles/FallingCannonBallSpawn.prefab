@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.1439124, g: 0.17051812, b: 0.3962264, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49236d33ae9afa34a9761e168441d083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fallingCannonballPrefab: {fileID: 0}
+  _fallingCannonballPrefab: {fileID: 5408517382966268325, guid: d97c17019b29d284193fbd61dae5e594, type: 3}
   _cooldown: 1
