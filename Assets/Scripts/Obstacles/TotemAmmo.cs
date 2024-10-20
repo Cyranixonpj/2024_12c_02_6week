@@ -23,7 +23,10 @@ namespace Obstacles
             {
                 Destroy(other.gameObject);
             }
-            // Destroy(gameObject);
+            if (other.CompareTag("Ground") || other.CompareTag("Barrel"))
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void OnBecameInvisible()
