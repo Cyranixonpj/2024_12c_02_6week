@@ -55,10 +55,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            _anim.SetTrigger("jump");
+            
 
             if (_coyoteCounter > 0f || _doubleJump)
             {
+                _anim.SetTrigger("jump");
                 _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
                 _doubleJump = !_doubleJump;
             }
