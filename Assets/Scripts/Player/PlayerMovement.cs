@@ -8,9 +8,11 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
     private bool _doubleJump;
     private bool _isFacingRight = true;
-    private float _coyoteTime = 0.2f;
+    private float _coyoteTime = 0.1f;
     private float _coyoteCounter;
-        
+    private float _jumpBufferTime = 0.2f;
+    private float _jumpBufferCounter;
+    
 
     [SerializeField] private float JumpForce = 5;
     [SerializeField] private float Speed = 5;
