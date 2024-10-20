@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Barrel
   - Destroyer
+  - Ground
   layers:
   - Default
   - TransparentFX

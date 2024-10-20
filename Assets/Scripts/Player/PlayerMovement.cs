@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
         Flip();
 
         _anim.SetBool("run", _xInput != 0);
+        _anim.SetBool("fall", _rb.velocity.y < 0 && _coyoteCounter > 0f);
+        _anim.SetBool("touchedGround", _coyoteCounter > 0f);
     }
 
     private void Jump()
@@ -50,8 +52,11 @@ public class PlayerMovement : MonoBehaviour
             _doubleJump = false;
         }
 
+
         if (Input.GetButtonDown("Jump"))
         {
+            _anim.SetTrigger("jump");
+
             if (_coyoteCounter > 0f || _doubleJump)
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
@@ -64,17 +69,24 @@ public class PlayerMovement : MonoBehaviour
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
             _coyoteCounter = 0f;
         }
-        _anim.SetBool("grounded",_coyoteCounter > 0f );
+
+        _anim.SetBool("grounded", _coyoteCounter > 0f);
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        _isGrounded = false;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        _isGrounded = true;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = true;
+        }
     }
 
     private void FixedUpdate()
