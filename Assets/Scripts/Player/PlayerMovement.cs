@@ -87,6 +87,12 @@ public class PlayerMovement : MonoBehaviour
         {
             _isGrounded = true;
         }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            _anim.SetTrigger("dead");
+            OnDeathAnimationEnd();
+        }
     }
 
     private void FixedUpdate()
@@ -103,5 +109,10 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1;
             transform.localScale = localScale;
         }
+    }
+    
+    public void OnDeathAnimationEnd()
+    {
+        Destroy(gameObject, 0.5f);
     }
 }
