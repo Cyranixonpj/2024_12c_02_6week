@@ -94,6 +94,11 @@ public class PlayerMovement : MonoBehaviour
             _anim.SetTrigger("dead");
             OnDeathAnimationEnd();
         }
+        if (other.gameObject.CompareTag("Barrel"))
+        {
+            _anim.SetTrigger("dead");
+            OnDeathAnimationEnd();
+        }
     }
 
     private void FixedUpdate()

@@ -23,6 +23,10 @@ public class CanonAmmo : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
         // Destroy(gameObject);
     }
 
