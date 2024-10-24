@@ -23,15 +23,17 @@ namespace Obstacles
         {
             _rb.velocity = Vector2.down * _speed;
         }
-
-        private void OnCollisionEnter2D(Collision2D other)
+        
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
                 Destroy(other.gameObject);
+                _rb.velocity = Vector2.zero;
             }
             else if (other.gameObject.CompareTag("Ground"))
             {
+                _rb.velocity = Vector2.zero;
                 isGrounded = true;
                 hasExploded = true;
                 animator.SetBool("isHit", isGrounded);

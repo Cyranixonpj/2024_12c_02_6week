@@ -27,7 +27,6 @@ public class CanonAmmo : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        // Destroy(gameObject);
     }
 
     private void OnBecameInvisible()
