@@ -6,10 +6,12 @@ public class CanonAmmo : MonoBehaviour
 {
     [SerializeField] private float _speed;
     private Rigidbody2D _rb;
+    private Animator _animator;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     public void Initialize(Vector2 direction)
@@ -21,11 +23,18 @@ public class CanonAmmo : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            _animator.SetTrigger("HasContact");
+            _animator.SetTrigger("HasExploded");
+            // Destroy(other.gameObject,0.2f);
+            _rb.velocity = Vector2.zero;
+            Destroy(gameObject,1f);
         }
         if (other.CompareTag("Ground"))
         {
-            Destroy(gameObject);
+            _rb.velocity = Vector2.zero;
+            _animator.SetTrigger("HasContact");
+            _animator.SetTrigger("HasExploded");
+            Destroy(gameObject,1f);
         }
     }
 
