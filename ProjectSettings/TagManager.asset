@@ -8,6 +8,10 @@ TagManager:
   - Destroyer
   - Ground
   - Enemy
+  - InstantDeath
+  - Silver coins
+  - Gold coins
+  - Diamonds
   layers:
   - Default
   - TransparentFX
