@@ -6,23 +6,29 @@ namespace Obstacles
     {
         [SerializeField] private float _speed;
         private Rigidbody2D _rb; 
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
         }
-        private void Start()
+
+        public void Initialize(Vector2 direction)
         {
-            _rb.velocity = transform.right * _speed;
-        } 
+            _rb.velocity = direction * _speed;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
                 Destroy(other.gameObject);
             }
-            Destroy(gameObject);
-        
+            if (other.CompareTag("Ground") || other.CompareTag("Barrel"))
+            {
+                Destroy(gameObject);
+            }
         }
+
         private void OnBecameInvisible()
         {
             Destroy(gameObject);
