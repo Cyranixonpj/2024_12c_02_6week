@@ -14,7 +14,7 @@ namespace Enemies
         private Animator _animator;
         private Transform _currentPoint;
         private Rigidbody2D _rb;
-        private bool _isWaiting=false;
+        private bool _isWaiting = false;
         void Start()
         {
             _rb = _enemyPrefab.GetComponent<Rigidbody2D>();
@@ -26,6 +26,7 @@ namespace Enemies
         {
 
             if (!_isWaiting){
+                _animator.SetBool("idle", false);
                 if (_currentPoint == _pointB.transform)
                 {
                     _rb.velocity = new Vector2(_speed, 0);
@@ -37,14 +38,14 @@ namespace Enemies
 
                 if (Vector2.Distance(transform.position, _currentPoint.position) < 0.5f && _currentPoint == _pointB.transform)
                 {
-                    //StartCoroutine(WaitAndIdle());
+                    StartCoroutine(WaitAndIdle());
                     Flip();
                     _currentPoint = _pointA.transform;
                 }
 
                 if (Vector2.Distance(transform.position, _currentPoint.position) < 0.5f && _currentPoint == _pointA.transform)
                 {
-                    //StartCoroutine(WaitAndIdle());
+                    StartCoroutine(WaitAndIdle());
                     Flip();
                     _currentPoint = _pointB.transform;
                 }
@@ -62,7 +63,7 @@ namespace Enemies
         {
             _isWaiting = true;
             _rb.velocity = Vector2.zero;
-            _animator.SetTrigger("Idle");
+            _animator.SetBool("idle", true);
             yield return new WaitForSeconds(2f);
             _isWaiting = false;
         }
