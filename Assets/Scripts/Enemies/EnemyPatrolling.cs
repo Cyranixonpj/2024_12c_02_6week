@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Enemies
 {
@@ -15,6 +14,7 @@ namespace Enemies
         private Transform _currentPoint;
         private Rigidbody2D _rb;
         public bool _isWaiting { get; set; } = false;
+
         void Start()
         {
             _rb = _enemyPrefab.GetComponent<Rigidbody2D>();
@@ -24,9 +24,8 @@ namespace Enemies
         
         void Update()
         {
-
-            if (!_isWaiting){
-                _animator.SetBool("idle", false);
+            if (!_isWaiting)
+            {
                 if (_currentPoint == _pointB.transform)
                 {
                     _rb.velocity = new Vector2(_speed, 0);
@@ -63,8 +62,8 @@ namespace Enemies
         {
             _isWaiting = true;
             _rb.velocity = Vector2.zero;
-            _animator.SetBool("idle", true);
-            yield return new WaitForSeconds(2f);
+            _animator.SetTrigger("idle");
+            yield return new WaitForSeconds(1.5f);
             _isWaiting = false;
         }
         
@@ -72,7 +71,7 @@ namespace Enemies
         {
             Gizmos.DrawWireSphere(_pointA.transform.position, 0.5f);
             Gizmos.DrawWireSphere(_pointB.transform.position, 0.5f);
-            Gizmos.DrawLine(_pointA.transform.position,_pointB.transform.position);
+            Gizmos.DrawLine(_pointA.transform.position, _pointB.transform.position);
         }
     }
 }
