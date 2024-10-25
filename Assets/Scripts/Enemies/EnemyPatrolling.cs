@@ -14,7 +14,7 @@ namespace Enemies
         private Animator _animator;
         private Transform _currentPoint;
         private Rigidbody2D _rb;
-        private bool _isWaiting = false;
+        public bool _isWaiting { get; set; } = false;
         void Start()
         {
             _rb = _enemyPrefab.GetComponent<Rigidbody2D>();
