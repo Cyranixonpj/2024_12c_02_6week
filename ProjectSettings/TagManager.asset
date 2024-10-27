@@ -49,6 +49,9 @@ TagManager:
   - name: Background
     uniqueID: 3436568217
     locked: 0
+  - name: WaterAndSpikes
+    uniqueID: 1077230175
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
