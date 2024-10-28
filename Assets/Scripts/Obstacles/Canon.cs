@@ -32,8 +32,8 @@ public class Canon : MonoBehaviour
             ammoOffsetX = 0.5f;
             smokeOffsetX = 1.2f;
         }
-        StartCoroutine(Shoot());
         
+        StartCoroutine(Shoot());
     }
 
    
