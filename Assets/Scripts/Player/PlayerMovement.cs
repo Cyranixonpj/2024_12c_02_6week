@@ -91,13 +91,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            _anim.SetTrigger("dead");
-            OnDeathAnimationEnd();
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth.TakeDamage(5);
+            //_anim.SetTrigger("dead");
+            //OnDeathAnimationEnd();
         }
         if (other.gameObject.CompareTag("Barrel"))
         {
-            _anim.SetTrigger("dead");
-            OnDeathAnimationEnd();
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth.TakeDamage(5);
+            //_anim.SetTrigger("dead");
+            //OnDeathAnimationEnd();
         }
     }
 
@@ -117,8 +121,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    public void OnDeathAnimationEnd()
-    {
-        Destroy(gameObject, 0.5f);
-    }
+    
 }
