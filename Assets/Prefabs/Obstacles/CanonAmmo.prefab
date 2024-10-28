@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4520529223336742390}
   - component: {fileID: 957248312512001026}
   - component: {fileID: 7085870738041752997}
+  - component: {fileID: 3096239172657051316}
   m_Layer: 0
   m_Name: CanonAmmo
   m_TagString: Untagged
@@ -162,3 +163,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
+--- !u!95 &3096239172657051316
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342488000645832168}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e376b8b9cb6c31a4e8fcdc046c7739b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
