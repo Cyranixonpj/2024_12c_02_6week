@@ -12,6 +12,7 @@ TagManager:
   - Silver coins
   - Gold coins
   - Diamonds
+  - Gold
   layers:
   - Default
   - TransparentFX
