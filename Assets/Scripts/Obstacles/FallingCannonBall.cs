@@ -23,21 +23,24 @@ namespace Obstacles
         {
             _rb.velocity = Vector2.down * _speed;
         }
-
-        private void OnCollisionEnter2D(Collision2D other)
+        
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
+                
+                _rb.velocity = Vector2.zero;
                 Destroy(other.gameObject);
             }
-            else if (other.gameObject.CompareTag("Ground"))
+            else if (other.CompareTag("Ground"))
             {
+                _rb.velocity = Vector2.zero;
                 isGrounded = true;
                 hasExploded = true;
                 animator.SetBool("isHit", isGrounded);
 
                 animator.SetBool("HasExploded", hasExploded);
-                Destroy(gameObject, 0.5f);
+                Destroy(gameObject, 1f);
             }
         }
     }

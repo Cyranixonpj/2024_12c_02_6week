@@ -55,8 +55,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            
-
             if (_coyoteCounter > 0f || _doubleJump)
             {
                 _anim.SetTrigger("jump");
@@ -91,13 +89,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            _anim.SetTrigger("dead");
-            OnDeathAnimationEnd();
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth.TakeDamage(5);
+            //_anim.SetTrigger("dead");
+            //OnDeathAnimationEnd();
         }
+
         if (other.gameObject.CompareTag("Barrel"))
         {
-            _anim.SetTrigger("dead");
-            OnDeathAnimationEnd();
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth.TakeDamage(5);
+            //_anim.SetTrigger("dead");
+            //OnDeathAnimationEnd();
         }
     }
 
@@ -115,10 +118,5 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1;
             transform.localScale = localScale;
         }
-    }
-    
-    public void OnDeathAnimationEnd()
-    {
-        Destroy(gameObject, 0.5f);
     }
 }
