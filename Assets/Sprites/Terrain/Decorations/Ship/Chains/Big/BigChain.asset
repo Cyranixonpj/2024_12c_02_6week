@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: BigChain
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: d3d6317e70c2f2741a375ce900f1d714, type: 3}
+  - {fileID: 21300000, guid: 016b9bb31ae64a94d84ca3204fca2cba, type: 3}
+  - {fileID: 21300000, guid: 942452cc2faee1c46a935e324ca1e226, type: 3}
+  - {fileID: 21300000, guid: 2496b3931dc13a243b17fa7d68252f85, type: 3}
+  - {fileID: 21300000, guid: da8aafeb894fe7a44929fe7741d890a5, type: 3}
+  - {fileID: 21300000, guid: 06f74b0bcc24dfc4aad420f13b08246e, type: 3}
+  - {fileID: 21300000, guid: 408dacf92c50feb42abf2d7ee463c913, type: 3}
+  - {fileID: 21300000, guid: a71084e3c3606964b88ed8e6609dfe20, type: 3}
+  m_MinSpeed: 5
+  m_MaxSpeed: 5
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
