@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1ff7f8c1bf189b045874a8a74f88030c
+guid: d7e1bcf1c75bce147b1b1e4c2d347aff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Platforms (32x32)_0
+      name: Platforms1 (32x32)_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 87
-        width: 128
-        height: 8
+        x: 121
+        y: 14
+        width: 33
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40e34542d5a170d4a9c0a7c7af65f484
-      internalID: -10772359
+      spriteID: ae387df397846a345998bebbe936fea0
+      internalID: -2065275172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platforms (32x32)_1
+      name: Platforms1 (32x32)_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 52
-        width: 128
-        height: 11
+        x: 24
+        y: 14
+        width: 97
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aae0f4658dd1b64d8dd94602009110a
-      internalID: 185361494
+      spriteID: 502be9fa47a9c524fa5753abc199c1ff
+      internalID: 14696858
       vertices: []
       indices: 
       edges: []
@@ -149,8 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Platforms (32x32)_0: -10772359
-      Platforms (32x32)_1: 185361494
+      Platforms1 (32x32)_0: 14696858
+      Platforms1 (32x32)_2: -2065275172
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
