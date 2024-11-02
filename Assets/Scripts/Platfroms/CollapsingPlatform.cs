@@ -54,19 +54,15 @@ namespace Platfroms
                _part1Collider.enabled = false;
                _part2Collider.enabled = false;
                yield return new WaitForSeconds(closeAgainCooldown);
-               // yield return new WaitForSeconds(closeAgainCooldown);
+               
                _part1Collider.enabled = true;
                _part2Collider.enabled = true;
               
            }
-          
-           
+
            _isOpening = false;
            
-                // yield return new WaitForSeconds(openDelay);
-                // bxCol.enabled = false;
-                // yield return new WaitForSeconds(closeAgainCooldown);
-                // bxCol.enabled = true;
+                
             
         }
     }
