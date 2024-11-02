@@ -26,14 +26,17 @@ public class PlayerCollectibles : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gold coins"))
         {
+            
             AddGoldCoin();
         }
         if (other.gameObject.CompareTag("Silver coins"))
         {
+
             AddSilverCoin();
         }
         if (other.gameObject.CompareTag("Diamonds"))
         {
+    
             AddDiamond();
         }
     }

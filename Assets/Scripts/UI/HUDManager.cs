@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -9,6 +9,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject _settingsView;
      private bool _isPaused;
      public Toggle fullscreenToggle;
+     public Toggle musicToggle;
+     private AudioManager _audioManager;
 
 
     private void Awake()
@@ -17,15 +19,18 @@ public class HUDManager : MonoBehaviour
         _mainView.SetActive(true);
         _pauseView.SetActive(false);
         _settingsView.SetActive(false);
+        _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        
     }
-    
-    private void Start()
+
+    public void Start()
     {
-        //fullscreenToggle.isOn = false;
-
+        if (_audioManager.IsMute() == true)
+            musicToggle.isOn = true;
+        else
+            musicToggle.isOn = false;
+        
     }
-
-    
 
 
     private void Update()
@@ -43,29 +48,31 @@ public class HUDManager : MonoBehaviour
         }
         
     }
+    public void MusicToggle()
+    {
+        if(_audioManager.IsMute() == false)
+        {
+            _audioManager.MuteMusic();
+        }
+        else
+        {
+            _audioManager.UnMuteMusic();
+        }
+    }
 
 
     public void SettingsClicked()
     {
+        _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         _pauseView.SetActive(false);
         _settingsView.SetActive(true);
     }
     
-    // public void ToggleFullscreen(bool fullscreen)
-    // {
-    //     Screen.fullScreen = fullscreen;
-    //     if (Screen.fullScreen)
-    //     {
-    //         Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
-    //     }
-    //     else
-    //     {
-    //         Screen.fullScreenMode = FullScreenMode.Windowed;
-    //     }
-    // }
+
     Vector2Int rez = new Vector2Int(1920, 1080);
     public void ToggleFullScreen()
     {
+        _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         FullScreenMode mode;
         if (Screen.fullScreenMode == FullScreenMode.Windowed)
         {
@@ -82,12 +89,12 @@ public class HUDManager : MonoBehaviour
             Screen.SetResolution(rez.x, rez.y, mode);
         }
     }
+
+   
     
     
     
-    
-    
-    void ResumeGame()
+    public void ResumeGame()
     {
         _pauseView.SetActive(false);
         _settingsView.SetActive(false);
