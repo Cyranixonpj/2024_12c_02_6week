@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public int _maxHealth { get; private set; }
 
     private Animator _anim;
+    private AudioManager _audioManager;
 
 
     private void Awake()
@@ -15,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth = _playerConfig.BaseHealth;
         _maxHealth = _playerConfig.MaxHealth;
         _anim = GetComponent<Animator>();
+        _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void TakeDamage(int damage)
@@ -28,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
+        _audioManager.PlaySFX(_audioManager.Death);
         _anim.SetTrigger("dead");
         OnDeathAnimationEnd();
     }
