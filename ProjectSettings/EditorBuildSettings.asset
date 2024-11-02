@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Wiki-Player.unity
+    guid: cb507a95e7fb01b44b7b3d2877ce38ca
   m_configObjects: {}
