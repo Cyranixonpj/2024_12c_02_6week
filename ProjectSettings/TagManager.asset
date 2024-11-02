@@ -51,6 +51,9 @@ TagManager:
   - name: Background
     uniqueID: 3436568217
     locked: 0
+  - name: BackDeco
+    uniqueID: 698091331
+    locked: 0
   - name: WaterAndSpikes
     uniqueID: 1077230175
     locked: 0
@@ -59,6 +62,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 3152845037
+    locked: 0
+  - name: Light
+    uniqueID: 354868229
     locked: 0
   - name: UI
     uniqueID: 2631741189
