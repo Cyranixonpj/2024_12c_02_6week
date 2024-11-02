@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: Water
+  m_Name: Candle
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -1102707428, guid: d0d364a6abc66c54ebc6e09b51aadac6, type: 3}
-  - {fileID: 208363450, guid: 3b1ced2f1c605b545a0bdd24ee3a8dbb, type: 3}
-  - {fileID: -2082360989, guid: 28e4d271482070b46bfd163684ee5355, type: 3}
-  - {fileID: 2112355193, guid: 973777cd2a09698498dbe6e6f3bc84d2, type: 3}
-  m_MinSpeed: 2.5
-  m_MaxSpeed: 2.5
+  - {fileID: 21300000, guid: 242ca1b7731f991418ddba308c5cdfb8, type: 3}
+  - {fileID: 21300000, guid: 1a85cce2e7898824ba5ffd1629b0247b, type: 3}
+  - {fileID: 21300000, guid: b144d57bcb011134f80817bec936999f, type: 3}
+  - {fileID: 21300000, guid: 98326341bd6f537418a4e7db6bd65f48, type: 3}
+  - {fileID: 21300000, guid: 288de0f9c062aa24b9a95b32615c4203, type: 3}
+  - {fileID: 21300000, guid: 914aacf650d17df47b1365cb251465f6, type: 3}
+  m_MinSpeed: 5
+  m_MaxSpeed: 5
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0

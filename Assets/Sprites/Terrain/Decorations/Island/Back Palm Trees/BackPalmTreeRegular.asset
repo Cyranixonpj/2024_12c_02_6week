@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: Water
+  m_Name: BackPalmTreeRegular
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -1102707428, guid: d0d364a6abc66c54ebc6e09b51aadac6, type: 3}
-  - {fileID: 208363450, guid: 3b1ced2f1c605b545a0bdd24ee3a8dbb, type: 3}
-  - {fileID: -2082360989, guid: 28e4d271482070b46bfd163684ee5355, type: 3}
-  - {fileID: 2112355193, guid: 973777cd2a09698498dbe6e6f3bc84d2, type: 3}
-  m_MinSpeed: 2.5
-  m_MaxSpeed: 2.5
+  - {fileID: 21300000, guid: cd77406906eb569429cf3020f6000307, type: 3}
+  - {fileID: 21300000, guid: f1c7757bbab928d4a87d7adc37af475c, type: 3}
+  - {fileID: 21300000, guid: c455164e2ecd4b14ca52460048eb263e, type: 3}
+  - {fileID: 21300000, guid: aa8e1f53c324e7847bad6ac818a4376b, type: 3}
+  m_MinSpeed: 5
+  m_MaxSpeed: 5
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
