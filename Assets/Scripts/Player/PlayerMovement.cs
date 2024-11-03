@@ -13,10 +13,10 @@ public class PlayerMovement : MonoBehaviour
     private bool _isFacingRight = true;
     private float _coyoteTime = 0.1f;
     private float _coyoteCounter;
-    
+
     [SerializeField] private float JumpForce = 5;
     [SerializeField] private float Speed = 5;
-    
+
     private KnockBack _knockBack;
 
     private void Awake()
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!_knockBack.isBeingKnockedBack )
+        if (!_knockBack.isBeingKnockedBack)
         {
             _xInput = Input.GetAxis("Horizontal");
 
@@ -43,17 +43,15 @@ public class PlayerMovement : MonoBehaviour
             _anim.SetBool("run", _xInput != 0);
             _anim.SetBool("fall", _rb.velocity.y < 0 && _coyoteCounter > 0f);
             _anim.SetBool("touchedGround", _coyoteCounter > 0f);
-        }else
+        }
+        else
         {
             _xInput = 0;
         }
-            
-        
-       
     }
+
     private void FixedUpdate()
     {
-        
         if (_isGrounded)
         {
             _rb.velocity = new Vector2(_xInput * Speed, _rb.velocity.y);
@@ -104,8 +102,6 @@ public class PlayerMovement : MonoBehaviour
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
             playerHealth.Heal(5);
             Destroy(other.gameObject);
-        
-           
         }
     }
 
@@ -128,21 +124,22 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
             Vector2 hitDirection = (transform.position - other.transform.position).normalized;
-            playerHealth.TakeDamage(1, hitDirection, Input.GetAxisRaw("Horizontal"));
-         
-           
+            playerHealth.TakeDamageKB(1, hitDirection, Input.GetAxisRaw("Horizontal"));
+        }
+        if(other.gameObject.CompareTag("InstantDeath"))
+        {
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth.TakeDamage(10);
         }
 
         if (other.gameObject.CompareTag("Barrel"))
         {
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-            playerHealth.TakeDamage(5, transform.right,_xInput);
-          
+            playerHealth.TakeDamage(5);
         }
     }
 
 
-  
     private void Flip()
     {
         if (_isFacingRight && _xInput < 0 || !_isFacingRight && _xInput > 0)

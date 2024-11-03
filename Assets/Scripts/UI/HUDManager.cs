@@ -14,7 +14,7 @@ public class HUDManager : MonoBehaviour
     private PlayerHealth _playerHealth;
 
     private bool _isPaused;
-   
+
     public Toggle musicToggle;
     private AudioManager _audioManager;
 
@@ -27,9 +27,8 @@ public class HUDManager : MonoBehaviour
         _settingsView.SetActive(false);
         _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        
     }
-    
+
 
     private void Update()
     {
@@ -44,15 +43,11 @@ public class HUDManager : MonoBehaviour
                 ResumeGame();
             }
         }
-        
-        if(_playerHealth._currentHealth <= 0)
+
+        if (_playerHealth._currentHealth <= 0)
         {
             StartCoroutine(Waiter());
- 
-           
         }
-   
-
     }
 
     public void MusicToggle()
@@ -75,8 +70,6 @@ public class HUDManager : MonoBehaviour
         _settingsView.SetActive(true);
 
         musicToggle.isOn = !_audioManager.IsMute();
-
-
     }
 
 
@@ -104,9 +97,6 @@ public class HUDManager : MonoBehaviour
     }
 
 
-
-
-
     public void ResumeGame()
     {
         _pauseView.SetActive(false);
@@ -127,14 +117,13 @@ public class HUDManager : MonoBehaviour
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         SceneManager.LoadScene("Wiki-Player");
     }
-    
+
     public void ExitToMenu()
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
 
 
         SceneManager.LoadSceneAsync("Wiki-Menu");
-        
     }
 
 
@@ -147,5 +136,3 @@ public class HUDManager : MonoBehaviour
         _deathView.SetActive(true);
     }
 }
-
-
