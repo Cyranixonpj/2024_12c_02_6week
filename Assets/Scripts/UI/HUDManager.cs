@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject _settingsView;
     [SerializeField] private GameObject _deathView;
     private PlayerHealth _playerHealth;
+
     private bool _isPaused;
    
     public Toggle musicToggle;
@@ -24,7 +25,7 @@ public class HUDManager : MonoBehaviour
         _settingsView.SetActive(false);
         _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-
+        
     }
     
 
@@ -48,7 +49,7 @@ public class HUDManager : MonoBehaviour
             _pauseView.SetActive(false);
             _settingsView.SetActive(false);
             _deathView.SetActive(true);
-            Time.timeScale = 0;
+            
            
         }
    
@@ -131,7 +132,10 @@ public class HUDManager : MonoBehaviour
     public void ExitToMenu()
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
-        SceneManager.LoadScene("Wiki-Menu");
+
+
+        SceneManager.LoadSceneAsync("Wiki-Menu");
+        
     }
 
 }

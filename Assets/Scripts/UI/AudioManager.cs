@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusic;
     public AudioClip ButtonCLicked;
     public AudioClip Death;
+    public AudioClip Sword;
     private static bool mute;
 
     private void Awake()
@@ -24,9 +25,14 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-      
+
         if (mute == false)
+        {
             musicSource.Play();
+            musicSource.loop = true;
+            musicSource.volume = 0.2f;
+        }
+      
        
         
     }

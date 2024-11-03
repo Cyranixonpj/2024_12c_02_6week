@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
 
     private Animator _anim;
     private AudioManager _audioManager;
+    private KnockBack _knockBack;
 
 
     private void Awake()
@@ -19,13 +20,30 @@ public class PlayerHealth : MonoBehaviour
         _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    public void TakeDamage(int damage)
+    private void Start()
+    {
+        _knockBack = GetComponent<KnockBack>();
+    }
+
+    public void TakeDamage(int damage,Vector2 hitDirecton, float k)
     {
         _currentHealth -= damage;
+        _knockBack.CallKnockBack(hitDirecton,Vector2.up, k); ;
         if (_currentHealth <= 0)
         {
             Die();
         }
+    }
+    
+    public void Heal(int healAmount)
+    {
+        _currentHealth += healAmount;
+        if (_currentHealth > _maxHealth)
+        {
+            _currentHealth = _maxHealth;
+        }
+        Debug.Log("Player healed. Current health: " + _currentHealth);
+    
     }
 
     public void Die()
@@ -35,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
         OnDeathAnimationEnd();
         
     }
+    
 
     public void OnDeathAnimationEnd()
     {
@@ -44,6 +63,6 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
-            TakeDamage(1);
+            TakeDamage(1, Vector2.up, 0.5f);
     }
 }

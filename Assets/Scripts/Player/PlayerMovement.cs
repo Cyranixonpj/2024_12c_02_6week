@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,10 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private bool _isFacingRight = true;
     private float _coyoteTime = 0.1f;
     private float _coyoteCounter;
-
-
+    
     [SerializeField] private float JumpForce = 5;
     [SerializeField] private float Speed = 5;
+    
+    private KnockBack _knockBack;
 
     private void Awake()
     {
@@ -23,16 +26,38 @@ public class PlayerMovement : MonoBehaviour
         _anim = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        _knockBack = GetComponent<KnockBack>();
+    }
+
     private void Update()
     {
-        _xInput = Input.GetAxis("Horizontal");
+        if (!_knockBack.isBeingKnockedBack )
+        {
+            _xInput = Input.GetAxis("Horizontal");
 
-        Jump();
-        Flip();
+            Jump();
+            Flip();
 
-        _anim.SetBool("run", _xInput != 0);
-        _anim.SetBool("fall", _rb.velocity.y < 0 && _coyoteCounter > 0f);
-        _anim.SetBool("touchedGround", _coyoteCounter > 0f);
+            _anim.SetBool("run", _xInput != 0);
+            _anim.SetBool("fall", _rb.velocity.y < 0 && _coyoteCounter > 0f);
+            _anim.SetBool("touchedGround", _coyoteCounter > 0f);
+        }else
+        {
+            _xInput = 0; // Ensure no horizontal movement during knockback
+        }
+            
+        
+       
+    }
+    private void FixedUpdate()
+    {
+        
+        if (_isGrounded)
+        {
+            _rb.velocity = new Vector2(_xInput * Speed, _rb.velocity.y);
+        }
     }
 
     private void Jump()
@@ -72,6 +97,18 @@ public class PlayerMovement : MonoBehaviour
         _anim.SetBool("grounded", _coyoteCounter > 0f);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("HealPotion"))
+        {
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth.Heal(5);
+            Destroy(other.gameObject);
+        
+           
+        }
+    }
+
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -90,25 +127,22 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-            playerHealth.TakeDamage(5);
-            //_anim.SetTrigger("dead");
-            //OnDeathAnimationEnd();
+            Vector2 hitDirection = (transform.position - other.transform.position).normalized;
+            playerHealth.TakeDamage(1, hitDirection, Input.GetAxisRaw("Horizontal"));
+         
+           
         }
 
         if (other.gameObject.CompareTag("Barrel"))
         {
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-            playerHealth.TakeDamage(5);
-            //_anim.SetTrigger("dead");
-            //OnDeathAnimationEnd();
+            playerHealth.TakeDamage(5, transform.right,_xInput);
+          
         }
     }
 
-    private void FixedUpdate()
-    {
-        _rb.velocity = new Vector2(_xInput * Speed, _rb.velocity.y);
-    }
 
+  
     private void Flip()
     {
         if (_isFacingRight && _xInput < 0 || !_isFacingRight && _xInput > 0)

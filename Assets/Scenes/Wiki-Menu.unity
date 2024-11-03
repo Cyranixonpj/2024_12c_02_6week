@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainView: {fileID: 31456068}
   _settingsView: {fileID: 1374718151}
-  musicMuteToggle: {fileID: 923473122}
+  musicToggle: {fileID: 0}
 --- !u!224 &499925600 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3088103034942661170, guid: 0a74e9e195a774340bbfc3e81840a9ad, type: 3}
@@ -4191,6 +4191,7 @@ MonoBehaviour:
   backgroundMusic: {fileID: 8300000, guid: 6a222603e1c254910bd40d483aef28b0, type: 3}
   ButtonCLicked: {fileID: 8300000, guid: f940e31e201494ad0a87d17b13f7e6c4, type: 3}
   Death: {fileID: 0}
+  Sword: {fileID: 0}
 --- !u!4 &2129589414
 Transform:
   m_ObjectHideFlags: 0
