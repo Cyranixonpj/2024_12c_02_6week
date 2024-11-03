@@ -14,11 +14,8 @@ TagManager:
   - Diamonds
   - Gold
   - Audio
-
   - Minus one HP
-
   - HealPotion
-
   layers:
   - Default
   - TransparentFX
@@ -54,23 +51,20 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 3436568217
+    uniqueID: 4168254749
     locked: 0
-  - name: BackDeco
-    uniqueID: 698091331
+  - name: BackgroundDeco
+    uniqueID: 2413057579
     locked: 0
   - name: WaterAndSpikes
-    uniqueID: 1077230175
+    uniqueID: 21523599
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Foreground
-    uniqueID: 3152845037
+    uniqueID: 1539322933
     locked: 0
   - name: Light
-    uniqueID: 354868229
-    locked: 0
-  - name: UI
-    uniqueID: 2631741189
+    uniqueID: 2379576755
     locked: 0
