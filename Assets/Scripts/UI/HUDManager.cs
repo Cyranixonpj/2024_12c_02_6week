@@ -25,10 +25,7 @@ public class HUDManager : MonoBehaviour
 
     public void Start()
     {
-        if (_audioManager.IsMute() == true)
-            musicToggle.isOn = true;
-        else
-            musicToggle.isOn = false;
+
         
     }
 
@@ -66,6 +63,23 @@ public class HUDManager : MonoBehaviour
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         _pauseView.SetActive(false);
         _settingsView.SetActive(true);
+
+
+        if (_audioManager.IsMute() == true && musicToggle.isOn == true)
+            return;
+        if (_audioManager.IsMute() == true && musicToggle.isOn == false)
+        {
+            musicToggle.isOn = true;
+            return;
+        }
+        if (_audioManager.IsMute() == false && musicToggle.isOn == false)
+            return;
+        if (_audioManager.IsMute() == false && musicToggle.isOn == true)
+        {
+            musicToggle.isOn = false;
+            return;
+        }
+         
     }
     
 
