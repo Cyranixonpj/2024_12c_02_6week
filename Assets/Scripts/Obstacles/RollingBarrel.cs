@@ -15,7 +15,7 @@ public class RollingBarrel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            _rb.velocity = Vector2.zero;
         }
         if(other.CompareTag("Destroyer"))
         {

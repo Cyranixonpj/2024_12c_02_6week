@@ -30,7 +30,8 @@ namespace Obstacles
             {
                 
                 _rb.velocity = Vector2.zero;
-                Destroy(other.gameObject);
+                Destroy(gameObject,0.3f);
+                
             }
             else if (other.CompareTag("Ground"))
             {

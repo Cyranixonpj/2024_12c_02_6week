@@ -14,6 +14,7 @@ TagManager:
   - Diamonds
   - Gold
   - Audio
+  - Minus one HP
   layers:
   - Default
   - TransparentFX
