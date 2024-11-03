@@ -1,43 +1,39 @@
 using System;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private GameObject _mainView;
     [SerializeField] private GameObject _pauseView;
     [SerializeField] private GameObject _settingsView;
-     private bool _isPaused;
-     public Toggle fullscreenToggle;
-     public Toggle musicToggle;
-     private AudioManager _audioManager;
+    [SerializeField] private GameObject _deathView;
+    private PlayerHealth _playerHealth;
+
+    private bool _isPaused;
+   
+    public Toggle musicToggle;
+    private AudioManager _audioManager;
 
 
     private void Awake()
     {
-        
+        Time.timeScale = 1;
         _mainView.SetActive(true);
         _pauseView.SetActive(false);
         _settingsView.SetActive(false);
         _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         
     }
-
-    public void Start()
-    {
-        if (_audioManager.IsMute() == true)
-            musicToggle.isOn = true;
-        else
-            musicToggle.isOn = false;
-        
-    }
-
+    
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(_isPaused == false)
+            if (_isPaused == false)
             {
                 PauseGame();
             }
@@ -47,10 +43,22 @@ public class HUDManager : MonoBehaviour
             }
         }
         
+        if(_playerHealth._currentHealth <= 0)
+        {
+            _mainView.SetActive(false);
+            _pauseView.SetActive(false);
+            _settingsView.SetActive(false);
+            _deathView.SetActive(true);
+            
+           
+        }
+   
+
     }
+
     public void MusicToggle()
     {
-        if(_audioManager.IsMute() == false)
+        if (_audioManager.IsMute() == false)
         {
             _audioManager.MuteMusic();
         }
@@ -66,10 +74,15 @@ public class HUDManager : MonoBehaviour
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         _pauseView.SetActive(false);
         _settingsView.SetActive(true);
+
+        musicToggle.isOn = !_audioManager.IsMute();
+
+
     }
-    
+
 
     Vector2Int rez = new Vector2Int(1920, 1080);
+
     public void ToggleFullScreen()
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
@@ -81,7 +94,8 @@ public class HUDManager : MonoBehaviour
             rez.x = Screen.width;
             //
             mode = FullScreenMode.FullScreenWindow;
-            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, mode); //This is the important part!
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height,
+                mode); //This is the important part!
         }
         else
         {
@@ -90,10 +104,10 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-   
-    
-    
-    
+
+
+
+
     public void ResumeGame()
     {
         _pauseView.SetActive(false);
@@ -101,12 +115,29 @@ public class HUDManager : MonoBehaviour
         Time.timeScale = 1;
         _isPaused = false;
     }
+
     void PauseGame()
     {
         _pauseView.SetActive(true);
         Time.timeScale = 0;
         _isPaused = true;
     }
+
+    public void ResumAfterDeath()
+    {
+        _audioManager.PlaySFX(_audioManager.ButtonCLicked);
+        SceneManager.LoadScene("Wiki-Player");
+    }
+    
+    public void ExitToMenu()
+    {
+        _audioManager.PlaySFX(_audioManager.ButtonCLicked);
+
+
+        SceneManager.LoadSceneAsync("Wiki-Menu");
+        
+    }
+
 }
 
 
