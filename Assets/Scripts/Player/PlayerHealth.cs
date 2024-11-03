@@ -28,10 +28,14 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage,Vector2 hitDirecton, float k)
     {
         _currentHealth -= damage;
-        _knockBack.CallKnockBack(hitDirecton,Vector2.up, k); ;
         if (_currentHealth <= 0)
         {
             Die();
+        }
+        else
+        {
+            _knockBack.CallKnockBack(hitDirecton,Vector2.up, k);
+            _anim.SetTrigger("hit");  
         }
     }
     
@@ -42,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
         {
             _currentHealth = _maxHealth;
         }
-        Debug.Log("Player healed. Current health: " + _currentHealth);
+        
     
     }
 
@@ -50,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
     {
         _audioManager.PlaySFX(_audioManager.Death);
         _anim.SetTrigger("dead");
-        OnDeathAnimationEnd();
+        
         
     }
     

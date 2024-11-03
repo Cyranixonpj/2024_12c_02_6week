@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,11 +47,8 @@ public class HUDManager : MonoBehaviour
         
         if(_playerHealth._currentHealth <= 0)
         {
-            _mainView.SetActive(false);
-            _pauseView.SetActive(false);
-            _settingsView.SetActive(false);
-            _deathView.SetActive(true);
-            
+            StartCoroutine(Waiter());
+ 
            
         }
    
@@ -138,6 +137,15 @@ public class HUDManager : MonoBehaviour
         
     }
 
+
+    public IEnumerator Waiter()
+    {
+        yield return new WaitForSeconds(3);
+        _mainView.SetActive(false);
+        _pauseView.SetActive(false);
+        _settingsView.SetActive(false);
+        _deathView.SetActive(true);
+    }
 }
 
 

@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             _anim.SetBool("touchedGround", _coyoteCounter > 0f);
         }else
         {
-            _xInput = 0; // Ensure no horizontal movement during knockback
+            _xInput = 0;
         }
             
         
