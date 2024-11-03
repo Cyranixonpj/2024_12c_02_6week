@@ -40,7 +40,7 @@ namespace Obstacles
                 animator.SetBool("isHit", isGrounded);
 
                 animator.SetBool("HasExploded", hasExploded);
-                Destroy(gameObject, 1f);
+                Destroy(gameObject, 0.2f);
             }
         }
     }

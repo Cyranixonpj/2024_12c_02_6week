@@ -44,21 +44,30 @@ namespace Platfroms
 
         private IEnumerator Opening()
         {
+            float animationTime = closeAgainCooldown;
+            float part1Speed = _part1Animator.speed;
+            float part2Speed = _part2Animator.speed;
            _part1Animator.SetTrigger("Open");
            _part2Animator.SetTrigger("Open");
-
+           
+           _part1Animator.speed = 1f/animationTime;
+           _part2Animator.speed = 1f/animationTime;
+            
+           
            yield return new WaitForSeconds(openDelay);
 
            if (_playerOnPlatform)
            {
                _part1Collider.enabled = false;
                _part2Collider.enabled = false;
+
                yield return new WaitForSeconds(closeAgainCooldown);
-               
+
                _part1Collider.enabled = true;
                _part2Collider.enabled = true;
-              
            }
+            _part1Animator.speed = part1Speed;
+            _part2Animator.speed = part2Speed;
 
            _isOpening = false;
            
