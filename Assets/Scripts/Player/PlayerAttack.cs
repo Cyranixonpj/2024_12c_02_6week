@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -7,11 +8,19 @@ public class PlayerAttack : MonoBehaviour
     private bool _attacking = false;
     private float _timeToAttack = 0.25f;
     private float _timer = 0f;
-    
+    private AudioManager _audioManager;
+
+
+    private void Awake()
+    {
+        _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         _anim = GetComponent<Animator>();
         _attackArea = transform.GetChild(0).gameObject;
+        
     }
 
    
@@ -20,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             _anim.SetTrigger("attackMelee");
+            _audioManager.PlaySFX(_audioManager.Sword);
             Attack();
             _anim.SetTrigger("attackStop");
         }
