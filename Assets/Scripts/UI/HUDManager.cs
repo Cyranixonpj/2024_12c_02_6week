@@ -11,7 +11,9 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject _pauseView;
     [SerializeField] private GameObject _settingsView;
     [SerializeField] private GameObject _deathView;
+    [SerializeField] private GameObject _levelEndView;
     private PlayerHealth _playerHealth;
+    private PlayerMovement _playerMovement;
 
     private bool _isPaused;
 
@@ -25,8 +27,10 @@ public class HUDManager : MonoBehaviour
         _mainView.SetActive(true);
         _pauseView.SetActive(false);
         _settingsView.SetActive(false);
+        _levelEndView.SetActive(false);
         _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
 
@@ -48,6 +52,14 @@ public class HUDManager : MonoBehaviour
         {
             StartCoroutine(Waiter());
         }
+
+        if (_playerMovement.levelEnd == true)
+        {
+            _levelEndView.SetActive(true);
+            _mainView.SetActive(false);
+            _pauseView.SetActive(false);
+            _settingsView.SetActive(false);
+        }
     }
 
     public void MusicToggle()
@@ -60,6 +72,13 @@ public class HUDManager : MonoBehaviour
         {
             _audioManager.UnMuteMusic();
         }
+    }
+
+    public void NextLevel()
+    {
+        _audioManager.PlaySFX(_audioManager.ButtonCLicked);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
+        
     }
 
 
@@ -115,7 +134,7 @@ public class HUDManager : MonoBehaviour
     public void ResumAfterDeath()
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
-        SceneManager.LoadScene("Wiki-Player");
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ExitToMenu()
@@ -129,7 +148,7 @@ public class HUDManager : MonoBehaviour
 
     public IEnumerator Waiter()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         _mainView.SetActive(false);
         _pauseView.SetActive(false);
         _settingsView.SetActive(false);
