@@ -10,10 +10,12 @@ public class PlayerHealth : MonoBehaviour
     private Animator _anim;
     private AudioManager _audioManager;
     private KnockBack _knockBack;
+  
 
 
     private void Awake()
     {
+       
         _currentHealth = _playerConfig.BaseHealth;
         _maxHealth = _playerConfig.MaxHealth;
         _anim = GetComponent<Animator>();
@@ -28,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamageKB(int damage, Vector2 hitDirecton, float k)
     {
         _currentHealth -= damage;
+        
         if (_currentHealth <= 0)
         {
             Die();
@@ -63,13 +66,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
+        
         _audioManager.PlaySFX(_audioManager.Death);
         _anim.SetTrigger("dead");
     }
 
 
-    public void OnDeathAnimationEnd()
-    {
-        Destroy(gameObject, 0.5f);
-    }
+
+
+    
 }

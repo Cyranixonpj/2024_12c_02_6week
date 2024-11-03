@@ -13,15 +13,21 @@ public class PlayerMovement : MonoBehaviour
     private bool _isFacingRight = true;
     private float _coyoteTime = 0.1f;
     private float _coyoteCounter;
+    public bool levelEnd;
+    public Vector2 boxSize;
+    public float castDistance;
+    public LayerMask groundLayer;
 
     [SerializeField] private float JumpForce = 5;
     [SerializeField] private float Speed = 5;
 
     private KnockBack _knockBack;
+    
 
     private void Awake()
     {
         //Grab references
+        levelEnd = false;
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
     }
@@ -29,11 +35,12 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _knockBack = GetComponent<KnockBack>();
+        
     }
 
     private void Update()
     {
-        if (!_knockBack.isBeingKnockedBack)
+        if (!_knockBack.isBeingKnockedBack  )
         {
             _xInput = Input.GetAxis("Horizontal");
 
@@ -52,15 +59,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_isGrounded)
+        if (isGrounded() )
         {
             _rb.velocity = new Vector2(_xInput * Speed, _rb.velocity.y);
         }
+     
     }
 
     private void Jump()
     {
-        if (_isGrounded)
+        if (isGrounded())
         {
             _coyoteCounter = _coyoteTime;
         }
@@ -108,22 +116,33 @@ public class PlayerMovement : MonoBehaviour
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
             playerHealth.TakeDamage(10);
         }
+
+        if (other.gameObject.CompareTag("LevelEnd"))
+        {
+            levelEnd = true;
+        }
     }
+    
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            _isGrounded = false;
-        }
+        // if (other.gameObject.CompareTag("Ground"))
+        // {
+        //     _isGrounded = false;
+        // }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            _isGrounded = true;
-        }
+        // if (other.gameObject.CompareTag("Ground"))
+        // {
+        //     Vector3 normal = other.GetContact(0).normal;
+        //     if (normal == Vector3.up)
+        //     {
+        //         _isGrounded = true;
+        //     }
+        //     
+        // }
 
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -138,6 +157,24 @@ public class PlayerMovement : MonoBehaviour
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
             playerHealth.TakeDamage(5);
         }
+    }
+    
+    public bool isGrounded()
+    {
+        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position-transform.up*castDistance,boxSize);
+        
     }
 
 

@@ -227,6 +227,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece70c1e9642a45428fb531b9b5034e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelEnd: 0
+  boxSize: {x: 0.6, y: 0.3}
+  castDistance: 0.4
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   JumpForce: 12
   Speed: 5
 --- !u!114 &3316686926627409813
@@ -315,7 +321,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 6600525165283142521}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6f02a9596b7498c46affa0e9968c0ab8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
