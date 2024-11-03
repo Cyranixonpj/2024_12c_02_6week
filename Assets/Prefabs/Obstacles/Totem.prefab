@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1938146420304124060}
   - component: {fileID: 412221321007344142}
   - component: {fileID: 5242527080926800870}
+  - component: {fileID: 3514547769144259537}
   m_Layer: 0
   m_Name: TotemHead1
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.12158233, y: -0.6117202, z: 0.009150073}
-  m_LocalScale: {x: 6, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2459097372943870850}
@@ -146,18 +147,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010486294, y: -0.0004773438}
+  m_Offset: {x: -0.018636823, y: -0.004552573}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5152099, y: 0.3334473}
-    oldSize: {x: 0.24, y: 0.32}
+    oldSize: {x: 0.75, y: 1}
     newSize: {x: 0.24, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2165578, y: 0.21859047}
+  m_Size: {x: 0.6566913, y: 0.699477}
   m_EdgeRadius: 0
 --- !u!114 &5242527080926800870
 MonoBehaviour:
@@ -173,8 +174,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totemAmmo: {fileID: 4037478991112029535, guid: 5144063cdd81b14469e3f4eed5ea40d5, type: 3}
   _cooldown: 2
-  _selectedDirection: 1
-  ammoOffsetY: -0.4
+  _selectedDirection: 0
+  ammoOffsetY: -0.1
+  ammoOffsetX: -0.2
+--- !u!95 &3514547769144259537
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283201436528010490}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b1701a094cee954c8c88ccb242b3127, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7021136716991982814
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +211,7 @@ GameObject:
   - component: {fileID: 1492735117646253087}
   - component: {fileID: 5969713920646651345}
   - component: {fileID: 4383584731065106983}
+  - component: {fileID: 6723450352405065155}
   m_Layer: 0
   m_Name: TotemHead2
   m_TagString: Untagged
@@ -204,8 +228,8 @@ Transform:
   m_GameObject: {fileID: 7021136716991982814}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12158233, y: 0.45827973, z: 0.009150073}
-  m_LocalScale: {x: 6, y: 5, z: 1}
+  m_LocalPosition: {x: -0.12158233, y: 0.06, z: 0.009150073}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2459097372943870850}
@@ -321,18 +345,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005985871, y: 0.00039333105}
+  m_Offset: {x: -0.02636242, y: 0.012619272}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.6253327, y: 0.33002505}
-    oldSize: {x: 0.3, y: 0.32}
+    oldSize: {x: 0.9375, y: 1}
     newSize: {x: 0.3, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.22184643, y: 0.21369311}
+  m_Size: {x: 0.76793814, y: 0.64567614}
   m_EdgeRadius: 0
 --- !u!114 &4383584731065106983
 MonoBehaviour:
@@ -348,8 +372,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totemAmmo: {fileID: 4037478991112029535, guid: 5144063cdd81b14469e3f4eed5ea40d5, type: 3}
   _cooldown: 2
-  _selectedDirection: 1
-  ammoOffsetY: -0.5
+  _selectedDirection: 0
+  ammoOffsetY: -0.15
+  ammoOffsetX: -0.6
+--- !u!95 &6723450352405065155
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021136716991982814}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: df81771af942cd446b1e1fc9a87db413, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7367944963401555044
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +409,7 @@ GameObject:
   - component: {fileID: 8137096543713844626}
   - component: {fileID: 1368501010485275461}
   - component: {fileID: 754207446905472188}
+  - component: {fileID: 2424957385884430522}
   m_Layer: 0
   m_Name: TotemHead3
   m_TagString: Untagged
@@ -379,8 +426,8 @@ Transform:
   m_GameObject: {fileID: 7367944963401555044}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12158233, y: 1.5182797, z: 0.009150073}
-  m_LocalScale: {x: 6, y: 5, z: 1}
+  m_LocalPosition: {x: -0.13, y: 0.744, z: 0.009150073}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2459097372943870850}
@@ -496,18 +543,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.037698746, y: 0.049412154}
+  m_Offset: {x: 0.14773232, y: 0.14721954}
   m_SpriteTilingProperty:
-    border: {x: 0.01, y: 0.01, z: 0.01, w: 0}
+    border: {x: 0.03125, y: 0.03125, z: 0.03125, w: 0}
     pivot: {x: 0.44037566, y: 0.3790782}
-    oldSize: {x: 0.6, y: 0.32}
+    oldSize: {x: 1.875, y: 1}
     newSize: {x: 0.3, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.58440995, y: 0.31153}
+  m_Size: {x: 1.7336475, y: 0.9309771}
   m_EdgeRadius: 0
 --- !u!114 &754207446905472188
 MonoBehaviour:
@@ -524,7 +571,29 @@ MonoBehaviour:
   _totemAmmo: {fileID: 4037478991112029535, guid: 5144063cdd81b14469e3f4eed5ea40d5, type: 3}
   _cooldown: 2
   _selectedDirection: 1
-  ammoOffsetY: -0.5
+  ammoOffsetY: -0.1
+  ammoOffsetX: -0.4
+--- !u!95 &2424957385884430522
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367944963401555044}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b5292951e7cd4042ae2898ab465bf3c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8317547464113183166
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class CanonAmmo : MonoBehaviour
         {
             _animator.SetTrigger("HasContact");
             _animator.SetTrigger("HasExploded");
-            // Destroy(other.gameObject,0.2f);
+            
             _rb.velocity = Vector2.zero;
             Destroy(gameObject,1f);
         }

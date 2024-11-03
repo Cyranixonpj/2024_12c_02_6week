@@ -14,7 +14,11 @@ TagManager:
   - Diamonds
   - Gold
   - Audio
+
+  - Minus one HP
+
   - HealPotion
+
   layers:
   - Default
   - TransparentFX

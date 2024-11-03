@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3096239172657051316}
   m_Layer: 0
   m_Name: CanonAmmo
-  m_TagString: Untagged
+  m_TagString: Minus one HP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,9 +120,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0014224622, y: -0.015634134}
+  m_Offset: {x: 0.0014224648, y: -0.015633957}
   serializedVersion: 2
-  m_Radius: 0.40050405
+  m_Radius: 0.23408908
 --- !u!50 &957248312512001026
 Rigidbody2D:
   serializedVersion: 4
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15407cb00c61e94e91642a533acfa9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 2
 --- !u!95 &3096239172657051316
 Animator:
   serializedVersion: 5

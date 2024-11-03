@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1705704023941700725}
   m_Layer: 0
   m_Name: FallingCannonBall
-  m_TagString: Untagged
+  m_TagString: Minus one HP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,9 +147,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.012852124}
   serializedVersion: 2
-  m_Radius: 0.49999997
+  m_Radius: 0.24296421
 --- !u!114 &2012438960845644453
 MonoBehaviour:
   m_ObjectHideFlags: 0

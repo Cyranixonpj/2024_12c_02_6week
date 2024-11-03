@@ -147,18 +147,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0058686733, y: -0.058686495}
+  m_Offset: {x: -0.016718626, y: -0.024805367}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.3}
+    oldSize: {x: 1.25, y: 0.8125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1995339, y: 0.9061017}
+  m_Size: {x: 1.0188346, y: 0.7479898}
   m_EdgeRadius: 0
 --- !u!114 &1987833794071569728
 MonoBehaviour:
@@ -174,8 +174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canonAmmo: {fileID: 2342488000645832168, guid: 4477798ca40994f4e9bc51615c136f27, type: 3}
   _smoke: {fileID: 5792822167869926152, guid: 2a86f14f22f923540a4da09bd652b619, type: 3}
-  _cooldown: 0
-  _selectedDirection: 0
+  _cooldown: 2
+  _selectedDirection: 1
 --- !u!95 &5387512861605589792
 Animator:
   serializedVersion: 5

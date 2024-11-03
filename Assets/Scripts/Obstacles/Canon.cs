@@ -14,8 +14,8 @@ public class Canon : MonoBehaviour
     [SerializeField] private GameObject _smoke;
     [SerializeField] private float _cooldown;
     [SerializeField] private Direction _selectedDirection;
-    private float ammoOffsetX = -0.5f;
-    private float smokeOffsetX = -1.2f;
+    private float ammoOffsetX = -0.1f;
+    private float smokeOffsetX = -0.8f;
     private Animator _animator;
     
     
@@ -26,14 +26,22 @@ public class Canon : MonoBehaviour
 
     private void Start()
     {
+        
+        SetAnimationSpeed();
         if (_selectedDirection == Direction.Right)
         {
             Flip();
             ammoOffsetX = 0.5f;
-            smokeOffsetX = 1.2f;
+            smokeOffsetX = 0.8f;
         }
         
         StartCoroutine(Shoot());
+        
+    }
+    
+    private void SetAnimationSpeed()
+    {
+        _animator.speed = 1 / _cooldown;
     }
 
    
@@ -41,13 +49,14 @@ public class Canon : MonoBehaviour
     public void FireAmmo()
     {
         
-        
         Vector3 ammoSpawn = new Vector3(transform.position.x + ammoOffsetX, transform.position.y + 0.1f , transform.position.z);
         Vector3 smokeSpawn = new Vector3(transform.position.x + smokeOffsetX, transform.position.y +0.1f , transform.position.z);
+        
         GameObject ammoInstance = Instantiate(_canonAmmo, ammoSpawn, transform.rotation);
         CanonAmmo ammoScript = ammoInstance.GetComponent<CanonAmmo>();
+        
         GameObject smokeInstance = Instantiate(_smoke, smokeSpawn, transform.rotation);
-    
+        
         if (ammoScript != null)
         {
             if (_selectedDirection == Direction.Left)
@@ -74,7 +83,7 @@ public class Canon : MonoBehaviour
             
             _animator.SetTrigger("Fire");
             
-            yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+            yield return new WaitForSeconds(1/_cooldown);
             
         }
     }
@@ -106,30 +115,3 @@ public class Canon : MonoBehaviour
 
     } 
 }
-
-// private IEnumerator Shoot()
-// {
-//     while (true)
-//     {
-//         
-//         _animator.SetTrigger("Fire");
-//         Vector3 ammoSpawn = new Vector3(transform.position.x + ammoOffsetX, transform.position.y , transform.position.z);
-//         GameObject ammoInstance = Instantiate(_canonAmmo, ammoSpawn, transform.rotation);
-//         CanonAmmo ammoScript = ammoInstance.GetComponent<CanonAmmo>();
-//         if (ammoScript != null)
-//         {
-//             if (_selectedDirection == Direction.Left)
-//             {
-//                 ammoScript.Initialize(Vector2.left);
-//             }
-//             else if (_selectedDirection == Direction.Right)
-//             { 
-//                 ammoScript.Initialize(Vector2.right);
-//             }
-//             
-//         }
-//
-//         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
-//         
-//     }
-// }

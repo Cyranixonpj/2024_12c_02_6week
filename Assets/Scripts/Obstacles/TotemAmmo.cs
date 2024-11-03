@@ -21,11 +21,11 @@ namespace Obstacles
         {
             if (other.CompareTag("Player"))
             {
-                Destroy(other.gameObject);
+                Destroy(gameObject, 1f);
             }
             if (other.CompareTag("Ground") || other.CompareTag("Barrel"))
             {
-                Destroy(gameObject);
+                Destroy(gameObject,1f);
             }
         }
 
