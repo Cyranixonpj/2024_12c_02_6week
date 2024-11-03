@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _mainView;
     [SerializeField] private GameObject _settingsView;
     private AudioManager _audioManager;
-    public Toggle musicMuteToggle;
+    public Toggle musicToggle;
 
     private void Awake()
     {
@@ -22,11 +22,7 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    private void Start()
-    {
-        
-
-    }
+  
 
 
     public void StartClicked()
@@ -41,11 +37,8 @@ public class MenuManager : MonoBehaviour
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         _mainView.SetActive(false);
         _settingsView.SetActive(true);
-        
-        if (_audioManager.IsMute() == true)
-            musicMuteToggle.isOn = true;
-        else
-            musicMuteToggle.isOn = false;
+        musicToggle.isOn = !_audioManager.IsMute();
+
 
     }
 

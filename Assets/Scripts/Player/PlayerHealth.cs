@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
         _audioManager.PlaySFX(_audioManager.Death);
         _anim.SetTrigger("dead");
         OnDeathAnimationEnd();
+        
     }
 
     public void OnDeathAnimationEnd()
