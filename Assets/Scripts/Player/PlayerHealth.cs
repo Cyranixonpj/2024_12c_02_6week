@@ -25,16 +25,33 @@ public class PlayerHealth : MonoBehaviour
         _knockBack = GetComponent<KnockBack>();
     }
 
-    public void TakeDamage(int damage,Vector2 hitDirecton, float k)
+    public void TakeDamageKB(int damage, Vector2 hitDirecton, float k)
     {
         _currentHealth -= damage;
-        _knockBack.CallKnockBack(hitDirecton,Vector2.up, k); ;
         if (_currentHealth <= 0)
         {
             Die();
         }
+        else
+        {
+            _knockBack.CallKnockBack(hitDirecton, Vector2.up, k);
+            _anim.SetTrigger("hit");
+        }
     }
-    
+
+    public void TakeDamage(int damage)
+    {
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            _anim.SetTrigger("hit");
+        }
+    }
+
     public void Heal(int healAmount)
     {
         _currentHealth += healAmount;
@@ -42,27 +59,17 @@ public class PlayerHealth : MonoBehaviour
         {
             _currentHealth = _maxHealth;
         }
-        Debug.Log("Player healed. Current health: " + _currentHealth);
-    
     }
 
     public void Die()
     {
         _audioManager.PlaySFX(_audioManager.Death);
         _anim.SetTrigger("dead");
-        OnDeathAnimationEnd();
-        
     }
-    
+
 
     public void OnDeathAnimationEnd()
     {
         Destroy(gameObject, 0.5f);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-            TakeDamage(1, Vector2.up, 0.5f);
     }
 }
