@@ -103,6 +103,11 @@ public class PlayerMovement : MonoBehaviour
             playerHealth.Heal(5);
             Destroy(other.gameObject);
         }
+        if(other.gameObject.CompareTag("InstantDeath"))
+        {
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth.TakeDamage(10);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -126,11 +131,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 hitDirection = (transform.position - other.transform.position).normalized;
             playerHealth.TakeDamageKB(1, hitDirection, Input.GetAxisRaw("Horizontal"));
         }
-        if(other.gameObject.CompareTag("InstantDeath"))
-        {
-            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-            playerHealth.TakeDamage(10);
-        }
+
 
         if (other.gameObject.CompareTag("Barrel"))
         {
