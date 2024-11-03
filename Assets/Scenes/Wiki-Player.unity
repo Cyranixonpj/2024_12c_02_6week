@@ -4599,6 +4599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicPlatformPrefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 569988927378671524, guid: 74a18c763bb706444b78ccea1393f105, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2948036383253767061, guid: 74a18c763bb706444b78ccea1393f105, type: 3}
       propertyPath: m_Size.x
       value: 10.773167
@@ -5044,7 +5048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1037900084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9429,6 +9433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicPlatformPrefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 569988927378671524, guid: 74a18c763bb706444b78ccea1393f105, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2948036383253767061, guid: 74a18c763bb706444b78ccea1393f105, type: 3}
       propertyPath: m_Size.x
       value: 2.74024
@@ -9856,10 +9864,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6609182622021850724, guid: 3f013a5113e30fc41b157d121f75ad0b, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 6f02a9596b7498c46affa0e9968c0ab8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
