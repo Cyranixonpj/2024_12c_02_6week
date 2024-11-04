@@ -116,6 +116,11 @@ public class PlayerMovement : MonoBehaviour
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
             playerHealth.TakeDamage(10);
         }
+        if(other.gameObject.CompareTag("Minus one HP"))
+        {
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth.TakeDamage(1);
+        }
 
         if (other.gameObject.CompareTag("LevelEnd"))
         {
@@ -124,25 +129,10 @@ public class PlayerMovement : MonoBehaviour
     }
     
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        // if (other.gameObject.CompareTag("Ground"))
-        // {
-        //     _isGrounded = false;
-        // }
-    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // if (other.gameObject.CompareTag("Ground"))
-        // {
-        //     Vector3 normal = other.GetContact(0).normal;
-        //     if (normal == Vector3.up)
-        //     {
-        //         _isGrounded = true;
-        //     }
-        //     
-        // }
+  
 
         if (other.gameObject.CompareTag("Enemy"))
         {
