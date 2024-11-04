@@ -17,6 +17,7 @@ TagManager:
   - Minus one HP
   - HealPotion
   - LevelEnd
+  - Wall
   layers:
   - Default
   - TransparentFX
