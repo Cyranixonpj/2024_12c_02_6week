@@ -29,7 +29,7 @@ public class CanonAmmo : MonoBehaviour
             _rb.velocity = Vector2.zero;
             Destroy(gameObject,1f);
         }
-        if (other.CompareTag("Ground"))
+        if (other.CompareTag("Ground")||other.CompareTag("Wall")||other.CompareTag("Barrel"))
         {
             _rb.velocity = Vector2.zero;
             _animator.SetTrigger("HasContact");

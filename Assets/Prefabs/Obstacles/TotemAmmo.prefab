@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9095513745172846426}
   - component: {fileID: 7479226716503443894}
   - component: {fileID: 511837385966055938}
+  - component: {fileID: 3916615549786678389}
   m_Layer: 0
   m_Name: TotemAmmo
   m_TagString: Minus one HP
@@ -172,3 +173,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28019333, y: 0.19023812}
   m_EdgeRadius: 0
+--- !u!95 &3916615549786678389
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4037478991112029535}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 668256a828e4d4f409eb2041fc2d0e58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

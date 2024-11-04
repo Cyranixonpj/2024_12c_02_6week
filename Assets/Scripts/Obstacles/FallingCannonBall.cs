@@ -33,7 +33,7 @@ namespace Obstacles
                 Destroy(gameObject,0.3f);
                 
             }
-            else if (other.CompareTag("Ground"))
+            else if (other.CompareTag("Ground")||other.CompareTag("Wall")||other.CompareTag("Barrel"))
             {
                 _rb.velocity = Vector2.zero;
                 isGrounded = true;
