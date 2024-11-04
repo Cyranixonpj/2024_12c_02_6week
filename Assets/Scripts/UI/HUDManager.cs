@@ -31,6 +31,7 @@ public class HUDManager : MonoBehaviour
         _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+    
     }
 
 
@@ -88,7 +89,14 @@ public class HUDManager : MonoBehaviour
         _pauseView.SetActive(false);
         _settingsView.SetActive(true);
 
-        musicToggle.isOn = !_audioManager.IsMute();
+        if (musicToggle != null)
+        {
+            bool isMute = _audioManager.IsMute();
+            if (musicToggle.isOn != isMute)
+            {
+                musicToggle.isOn = isMute;
+            }
+        }
     }
 
 

@@ -28,7 +28,7 @@ public class MenuManager : MonoBehaviour
     public void StartClicked()
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
-        SceneManager.LoadScene("Wiki-Player");
+        SceneManager.LoadSceneAsync("LVL_0");
 
     }
     
@@ -37,7 +37,14 @@ public class MenuManager : MonoBehaviour
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         _mainView.SetActive(false);
         _settingsView.SetActive(true);
-        musicToggle.isOn = !_audioManager.IsMute();
+        if (musicToggle != null)
+        {
+            bool isMute = _audioManager.IsMute();
+            if (musicToggle.isOn != isMute)
+            {
+                musicToggle.isOn = isMute;
+            }
+        }
 
 
     }
