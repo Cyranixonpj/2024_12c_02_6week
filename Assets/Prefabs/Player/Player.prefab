@@ -228,12 +228,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelEnd: 0
-  boxSize: {x: 0.6, y: 0.3}
+  boxSize: {x: 0.4, y: 0.4}
   castDistance: 0.4
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  JumpForce: 12
+  JumpForce: 15
   Speed: 5
 --- !u!114 &3316686926627409813
 MonoBehaviour:
