@@ -1745,14 +1745,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3740363896320760705, guid: 3f013a5113e30fc41b157d121f75ad0b, type: 3}
-      propertyPath: boxSize.x
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740363896320760705, guid: 3f013a5113e30fc41b157d121f75ad0b, type: 3}
-      propertyPath: boxSize.y
-      value: 0.18
-      objectReference: {fileID: 0}
     - target: {fileID: 5326518407759940435, guid: 3f013a5113e30fc41b157d121f75ad0b, type: 3}
       propertyPath: _diamondText
       value: 

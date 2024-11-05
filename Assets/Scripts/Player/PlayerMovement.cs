@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
             Jump();
             Flip();
+            ControlFallDirection();
 
             _anim.SetBool("run", _xInput != 0);
             _anim.SetBool("fall", _rb.velocity.y < 0 && _coyoteCounter > 0f);
@@ -165,6 +166,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.DrawWireCube(transform.position-transform.up*castDistance,boxSize);
         
+    }
+    private void ControlFallDirection()
+    {
+        if (_rb.velocity.y < 0)
+        {
+            float fallDirection = Input.GetAxis("Horizontal");
+            _rb.velocity = new Vector2(fallDirection * Speed, _rb.velocity.y);
+        }
     }
 
 
