@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float Speed = 5;
 
     private KnockBack _knockBack;
+  
     
 
     private void Awake()
@@ -36,10 +37,12 @@ public class PlayerMovement : MonoBehaviour
     {
         _knockBack = GetComponent<KnockBack>();
         
+        
     }
 
     private void Update()
     {
+      
         if (!_knockBack.isBeingKnockedBack  )
         {
             _xInput = Input.GetAxis("Horizontal");

@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private Animator _anim;
     private AudioManager _audioManager;
     private KnockBack _knockBack;
+    private PlayerMovement _playerMovement;
   
 
 
@@ -25,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         _knockBack = GetComponent<KnockBack>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     public void TakeDamageKB(int damage, Vector2 hitDirecton, float k)
@@ -66,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        
+        _playerMovement.enabled = false;
         _audioManager.PlaySFX(_audioManager.Death);
         _anim.SetTrigger("dead");
     }
