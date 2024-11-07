@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Jan-New-level-one.unity
     guid: beff16684353dc54d954e6eb30398fca
   - enabled: 1
-    path: "Assets/Scenes/Micha\u0142-2nd lvl.unity"
+    path: Assets/Scenes/LVL_2.unity
     guid: 255cb75d7d5a1724d85c93654f104f01
   - enabled: 1
     path: Assets/Scenes/Wiki-End.unity
