@@ -10,6 +10,7 @@ public class PlayerCollectibles : MonoBehaviour
     public TMP_Text _silverCoinText;
     private int _diamondCounter;
     public TMP_Text _diamondText;
+    private int _keyCounter;
 
 
     private void Awake()
@@ -17,6 +18,7 @@ public class PlayerCollectibles : MonoBehaviour
         _goldCoinCounter = 0;
         _silverCoinCounter = 0;
         _diamondCounter = 0;
+        _keyCounter = 0;
         _goldCoinText.text = _goldCoinCounter.ToString();
         _silverCoinText.text = _silverCoinCounter.ToString();
         _diamondText.text = _diamondCounter.ToString();
@@ -38,6 +40,10 @@ public class PlayerCollectibles : MonoBehaviour
         {
             AddDiamond();
         }
+        if (other.gameObject.CompareTag("Key"))
+        {
+            AddKey();
+        }
     }
 
 
@@ -57,5 +63,23 @@ public class PlayerCollectibles : MonoBehaviour
     {
         _diamondCounter += 1;
         _diamondText.text = _diamondCounter.ToString();
+    }
+    private void AddKey()
+    {
+        _keyCounter += 1;
+        Debug.Log("Key collected");
+    }
+    public int GetKeyCount()
+    {
+        return _keyCounter;
+    }
+    public void UseKey()
+    {
+        _keyCounter -= 1;
+    }
+
+    public bool HasKey()
+    {
+        return _keyCounter > 0;
     }
 }
