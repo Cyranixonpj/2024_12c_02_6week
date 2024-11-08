@@ -9,9 +9,7 @@ public class Chest : MonoBehaviour
 
     private void Awake()
     {
-
         _animator = GetComponent<Animator>();
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -19,7 +17,6 @@ public class Chest : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _animator.SetTrigger("IsOpen");
-            _triggerCollider2D.enabled = false;
         }
     }
 }
