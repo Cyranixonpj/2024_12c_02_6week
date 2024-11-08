@@ -11,6 +11,7 @@ public class PlayerCollectibles : MonoBehaviour
     private int _diamondCounter;
     public TMP_Text _diamondText;
     private int _keyCounter;
+    public TMP_Text _keyText;
 
 
     private void Awake()
@@ -22,6 +23,7 @@ public class PlayerCollectibles : MonoBehaviour
         _goldCoinText.text = _goldCoinCounter.ToString();
         _silverCoinText.text = _silverCoinCounter.ToString();
         _diamondText.text = _diamondCounter.ToString();
+        _keyText.text = _keyCounter.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -67,7 +69,7 @@ public class PlayerCollectibles : MonoBehaviour
     private void AddKey()
     {
         _keyCounter += 1;
-        Debug.Log("Key collected");
+        _keyText.text = _keyCounter.ToString();
     }
     public int GetKeyCount()
     {
