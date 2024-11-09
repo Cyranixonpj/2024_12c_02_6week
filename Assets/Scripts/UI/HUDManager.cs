@@ -1,6 +1,6 @@
-using System;
+
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,8 +14,9 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject _levelEndView;
     private PlayerHealth _playerHealth;
     private PlayerMovement _playerMovement;
-
+    private LevelTimer _levelTimer;
     private bool _isPaused;
+    public TMP_Text _timeText;
 
     public Toggle musicToggle;
     private AudioManager _audioManager;
@@ -23,6 +24,8 @@ public class HUDManager : MonoBehaviour
 
     private void Awake()
     {
+        
+        
         Time.timeScale = 1;
         _mainView.SetActive(true);
         _pauseView.SetActive(false);
@@ -31,7 +34,9 @@ public class HUDManager : MonoBehaviour
         _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-    
+        _levelTimer = GetComponent<LevelTimer>();
+        _levelTimer.StartTimer();
+
     }
 
 
@@ -60,6 +65,9 @@ public class HUDManager : MonoBehaviour
             _mainView.SetActive(false);
             _pauseView.SetActive(false);
             _settingsView.SetActive(false);
+            _levelTimer.StopTimer();
+            _timeText.text = _levelTimer.GetTime().ToString("F2");
+            
         }
     }
 
@@ -79,6 +87,7 @@ public class HUDManager : MonoBehaviour
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
+        _levelTimer.StopTimer();
         
     }
     
@@ -86,6 +95,7 @@ public class HUDManager : MonoBehaviour
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        _levelTimer.StopTimer();
     }
     
 
@@ -150,14 +160,14 @@ public class HUDManager : MonoBehaviour
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        _levelTimer.StopTimer();
     }
 
     public void ExitToMenu()
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
-
-
         SceneManager.LoadSceneAsync("Wiki-Menu");
+        _levelTimer.StopTimer();
     }
 
 
