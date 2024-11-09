@@ -81,6 +81,13 @@ public class HUDManager : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
         
     }
+    
+    public void RestartLevel()
+    {
+        _audioManager.PlaySFX(_audioManager.ButtonCLicked);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+    
 
 
     public void SettingsClicked()
