@@ -61,12 +61,18 @@ public class HUDManager : MonoBehaviour
 
         if (_playerMovement.levelEnd == true)
         {
-            _levelEndView.SetActive(true);
-            _mainView.SetActive(false);
-            _pauseView.SetActive(false);
-            _settingsView.SetActive(false);
-            _levelTimer.StopTimer();
-            _timeText.text = _levelTimer.GetTime().ToString("F2");
+            
+                _levelEndView.SetActive(true);
+                _mainView.SetActive(false);
+                _pauseView.SetActive(false);
+                _settingsView.SetActive(false);
+                _levelTimer.StopTimer();
+                _timeText.text = _levelTimer.GetTime().ToString("F2");
+            
+            
+           
+            
+            
             
         }
     }

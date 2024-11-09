@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/LVL_0.unity
     guid: 4b5671f78f7f9f54f80a9d42163925f7
   - enabled: 1
-    path: Assets/Scenes/Jan-New-level-one.unity
-    guid: beff16684353dc54d954e6eb30398fca
+    path: Assets/Scenes/LVL_1.unity
+    guid: 6147ad42b7cfe64488981663e1baf174
   - enabled: 1
     path: Assets/Scenes/LVL_2.unity
     guid: 255cb75d7d5a1724d85c93654f104f01
