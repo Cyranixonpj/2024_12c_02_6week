@@ -56,6 +56,12 @@ public class MenuManager : MonoBehaviour
         _mainView.SetActive(true);
         
     }
+
+    public void Menu()
+    {
+        _audioManager.PlaySFX(_audioManager.ButtonCLicked);
+        SceneManager.LoadSceneAsync("Wiki-Menu");
+    }
     
     
     
