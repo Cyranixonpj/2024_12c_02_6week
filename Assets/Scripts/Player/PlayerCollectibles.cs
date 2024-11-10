@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerCollectibles : MonoBehaviour
 {
-    private int _goldCoinCounter;
+    public int _goldCoinCounter;
     public TMP_Text _goldCoinText;
-    private int _silverCoinCounter;
+    public int _silverCoinCounter;
     public TMP_Text _silverCoinText;
-    private int _diamondCounter;
+    public int _diamondCounter;
     public TMP_Text _diamondText;
-    private int _keyCounter;
+    public int _keyCounter;
     public TMP_Text _keyText;
+
+   
 
 
     private void Awake()

@@ -20,6 +20,17 @@ public class HUDManager : MonoBehaviour
 
     public Toggle musicToggle;
     private AudioManager _audioManager;
+    private PlayerCollectibles _playerCollectibles;
+    
+    public TMP_Text _goldCoinTextEND;
+    public TMP_Text _silverCoinTextEND;
+    public TMP_Text _diamondTextEND;
+    public TMP_Text _keyTextEND;
+    private int _goldCoinCounter;
+    private int _silverCoinCounter;
+    private int _diamondCounter;
+    private int _keyCounter;
+    
 
 
     private void Awake()
@@ -35,7 +46,12 @@ public class HUDManager : MonoBehaviour
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         _levelTimer = GetComponent<LevelTimer>();
+        _playerCollectibles = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCollectibles>();
         _levelTimer.StartTimer();
+        _goldCoinCounter = GameObject.FindGameObjectsWithTag("Gold coins").Length;
+        _silverCoinCounter= GameObject.FindGameObjectsWithTag("Silver coins").Length;
+        _diamondCounter = GameObject.FindGameObjectsWithTag("Diamonds").Length;
+        _keyCounter = GameObject.FindGameObjectsWithTag("Key").Length;
 
     }
 
@@ -67,15 +83,20 @@ public class HUDManager : MonoBehaviour
                 _pauseView.SetActive(false);
                 _settingsView.SetActive(false);
                 _levelTimer.StopTimer();
-                _timeText.text = _levelTimer.GetTime().ToString("F2");
-            
-            
-           
-            
-            
+               FinalStats();
             
         }
     }
+
+    private void FinalStats()
+    {
+        _timeText.text = _levelTimer.GetTime().ToString("F2");
+        _goldCoinTextEND.text = _playerCollectibles._goldCoinCounter + "/" + _goldCoinCounter;
+        _silverCoinTextEND.text = _playerCollectibles._silverCoinCounter + "/" + _silverCoinCounter;
+        _diamondTextEND.text = _playerCollectibles._diamondCounter + "/" + _diamondCounter;
+        _keyTextEND.text = _playerCollectibles._keyCounter + "/" + _keyCounter;
+    }
+    
 
     public void MusicToggle()
     {
