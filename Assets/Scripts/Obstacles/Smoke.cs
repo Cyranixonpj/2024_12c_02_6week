@@ -17,9 +17,5 @@ public class Smoke : MonoBehaviour
         Destroy(gameObject,0.5f);
         
     }
-
-    private void Update()
-    {
-        _animator.SetTrigger("Smoke");
-    }
+    
 }
