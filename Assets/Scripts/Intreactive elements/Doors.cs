@@ -6,11 +6,12 @@ public class Doors : MonoBehaviour
 {
     
     [SerializeField] private Collider2D _triggerCollider2D;
-    private Animator _animator;
-
     [SerializeField] private Doors teleportTo;
     [SerializeField] private int offTeleport;
     [SerializeField] private bool isReturnDoors = false;
+    private Animator _animator;
+    private bool isOpened = false;
+    
     private PlayerCollectibles _playerCollectibles;
     
     private void Awake()
@@ -26,21 +27,26 @@ public class Doors : MonoBehaviour
         {
             if (isReturnDoors)
             {
-                _animator.SetTrigger("IsOpen");
-                _triggerCollider2D.enabled = false;
                 StartCoroutine(WaitForAnimation(other));
             }
             else
             {
-                _playerCollectibles = other.GetComponent<PlayerCollectibles>();
-                if (_playerCollectibles != null && _playerCollectibles.HasKey())
+                if (isOpened)
                 {
-                    _animator.SetTrigger("IsOpen");
-                    _triggerCollider2D.enabled = false;
-                    _playerCollectibles.UseKey();
-                    Debug.Log("Player has now: " + _playerCollectibles.GetKeyCount() + " keys");
                     StartCoroutine(WaitForAnimation(other));
                 }
+                else
+                {
+                    _playerCollectibles = other.GetComponent<PlayerCollectibles>();
+                    if (_playerCollectibles != null && _playerCollectibles.HasKey())
+                    {
+                        _animator.SetTrigger("IsOpen");
+                        _playerCollectibles.UseKey();
+                        Debug.Log("Player has now: " + _playerCollectibles.GetKeyCount() + " keys");
+                        StartCoroutine(WaitForAnimation(other));
+                    }
+                }
+                
             }
         }
     }
@@ -54,8 +60,20 @@ public class Doors : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(1f);
-            other.transform.position = new Vector3(teleportTo.transform.position.x+offTeleport, teleportTo.transform.position.y-1);
+            if (isOpened)
+            {
+                yield return new WaitForSeconds(1f);
+                other.transform.position = new Vector3(teleportTo.transform.position.x+offTeleport, teleportTo.transform.position.y-1);
+            }
+            else
+            {
+                teleportTo.isOpened = true;
+                teleportTo._animator.Play("Doors_Open");
+                isOpened = true;
+                yield return new WaitForSeconds(1f);
+                other.transform.position = new Vector3(teleportTo.transform.position.x+offTeleport, teleportTo.transform.position.y-1);    
+            }
+            
         }
     }
    
