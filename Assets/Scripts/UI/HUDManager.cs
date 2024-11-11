@@ -42,6 +42,7 @@ public class HUDManager : MonoBehaviour
         _pauseView.SetActive(false);
         _settingsView.SetActive(false);
         _levelEndView.SetActive(false);
+        _deathView.SetActive(false);
         _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
