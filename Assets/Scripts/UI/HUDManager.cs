@@ -83,7 +83,7 @@ public class HUDManager : MonoBehaviour
 
         if (_playerHealth._currentHealth <= 0)
         {
-            StartCoroutine(Waiter());
+            StartCoroutine(Waiter1());
         }
 
         if (_playerMovement.levelEnd == true && !_levelEndProcessed)
@@ -252,7 +252,7 @@ public class HUDManager : MonoBehaviour
     }
 
 
-    public IEnumerator Waiter()
+    public IEnumerator Waiter1()
     {
         yield return new WaitForSeconds(1.5f);
         _mainView.SetActive(false);

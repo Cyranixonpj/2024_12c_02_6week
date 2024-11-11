@@ -28,7 +28,7 @@ public class EndMenuManager : MonoBehaviour
         _silverCoinText.text = "Silver Coins :    " +PlayerPrefs.GetInt("SilverCoins")+"/"+PlayerPrefs.GetInt("SilverCoinsTotal");
         _diamondText.text = "Diamonds :    " +PlayerPrefs.GetInt("Diamonds")+"/"+PlayerPrefs.GetInt("DiamondsTotal");
         _keyText.text = "Keys :    " +PlayerPrefs.GetInt("Keys")+"/"+PlayerPrefs.GetInt("KeysTotal");
-        _timeText.text = "Time :    " +PlayerPrefs.GetFloat("Time");
+        _timeText.text = "Time :    " +PlayerPrefs.GetFloat("Time").ToString("F2");
     }
     
     public void Menu()
