@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        //Grab references
+        
         levelEnd = false;
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();

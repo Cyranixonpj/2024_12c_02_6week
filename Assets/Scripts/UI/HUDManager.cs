@@ -29,7 +29,18 @@ public class HUDManager : MonoBehaviour
     private int _silverCoinCounter;
     private int _diamondCounter;
     private int _keyCounter;
+
+    private static int _goldCoinFinal;
+    private static int _silverCoinFinal;
+    private static int _diamondFinal;
+    private static int _keyFinal;
+    private static float _timeFinal;
     
+    private static int _goldCoinTotal;
+    private static int _silverCoinTotal;
+    private static int _diamondTotal;
+    private static int _keyTotal;
+    private bool _levelEndProcessed = false;
 
 
     private void Awake()
@@ -75,26 +86,67 @@ public class HUDManager : MonoBehaviour
             StartCoroutine(Waiter());
         }
 
-        if (_playerMovement.levelEnd == true)
+        if (_playerMovement.levelEnd == true && !_levelEndProcessed)
         {
-            
+            _levelEndProcessed = true;
                 _levelEndView.SetActive(true);
                 _mainView.SetActive(false);
                 _pauseView.SetActive(false);
                 _settingsView.SetActive(false);
                 _levelTimer.StopTimer();
-               FinalStats();
+               LevelStats();
+               _goldCoinFinal += _playerCollectibles._goldCoinCounter;
+               _silverCoinFinal += _playerCollectibles._silverCoinCounter;
+               _diamondFinal += _playerCollectibles._diamondCounter;
+               _keyFinal += _playerCollectibles._keyCounter;
+               _timeFinal += _levelTimer.GetTime();
+
+               _goldCoinTotal += _goldCoinCounter;
+               _silverCoinTotal += _silverCoinCounter;
+               _diamondTotal += _diamondCounter;
+               _keyTotal += _keyCounter;
+               
+               if(SceneManager.GetActiveScene().buildIndex == 3)
+               {
+                   FinalStats();
+                   _goldCoinFinal = 0;
+                   _silverCoinFinal = 0;
+                   _diamondFinal = 0;
+                   _keyFinal = 0;
+                   _timeFinal = 0;
+                   _goldCoinTotal = 0;
+                   _silverCoinTotal = 0;
+                   _diamondTotal = 0;
+                   _keyTotal = 0;
+               }
+              
             
         }
     }
 
-    private void FinalStats()
+    private void LevelStats()
     {
         _timeText.text = _levelTimer.GetTime().ToString("F2");
         _goldCoinTextEND.text = _playerCollectibles._goldCoinCounter + "/" + _goldCoinCounter;
         _silverCoinTextEND.text = _playerCollectibles._silverCoinCounter + "/" + _silverCoinCounter;
         _diamondTextEND.text = _playerCollectibles._diamondCounter + "/" + _diamondCounter;
         _keyTextEND.text = _playerCollectibles._keyCounter + "/" + _keyCounter;
+        
+    }
+
+    private void FinalStats()
+    {
+        PlayerPrefs.SetInt("GoldCoins", _goldCoinFinal);
+        PlayerPrefs.SetInt("SilverCoins", _silverCoinFinal);
+        PlayerPrefs.SetInt("Diamonds", _diamondFinal);
+        PlayerPrefs.SetInt("Keys", _keyFinal);
+        PlayerPrefs.SetFloat("Time", _timeFinal);
+        
+        PlayerPrefs.SetInt("GoldCoinsTotal", _goldCoinTotal);
+        PlayerPrefs.SetInt("SilverCoinsTotal", _silverCoinTotal);
+        PlayerPrefs.SetInt("DiamondsTotal", _diamondTotal);
+        PlayerPrefs.SetInt("KeysTotal", _keyTotal);
+        
     }
     
 
@@ -188,6 +240,15 @@ public class HUDManager : MonoBehaviour
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         SceneManager.LoadSceneAsync("Wiki-Menu");
         _levelTimer.StopTimer();
+        _goldCoinFinal = 0;
+        _silverCoinFinal = 0;
+        _diamondFinal = 0;
+        _keyFinal = 0;
+        _timeFinal = 0;
+        _goldCoinTotal = 0;
+        _silverCoinTotal = 0;
+        _diamondTotal = 0;
+        _keyTotal = 0;
     }
 
 
