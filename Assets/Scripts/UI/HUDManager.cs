@@ -18,7 +18,6 @@ public class HUDManager : MonoBehaviour
     private bool _isPaused;
     public TMP_Text _timeText;
 
-    public Toggle musicToggle;
     private AudioManager _audioManager;
     private PlayerCollectibles _playerCollectibles;
     
@@ -99,7 +98,7 @@ public class HUDManager : MonoBehaviour
     }
     
 
-    public void MusicToggle()
+    public void Music()
     {
         if (_audioManager.IsMute() == false)
         {
@@ -134,20 +133,13 @@ public class HUDManager : MonoBehaviour
         _pauseView.SetActive(false);
         _settingsView.SetActive(true);
 
-        if (musicToggle != null)
-        {
-            bool isMute = _audioManager.IsMute();
-            if (musicToggle.isOn != isMute)
-            {
-                musicToggle.isOn = isMute;
-            }
-        }
+       
     }
 
 
     Vector2Int rez = new Vector2Int(1920, 1080);
 
-    public void ToggleFullScreen()
+    public void FullScreen()
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         FullScreenMode mode;

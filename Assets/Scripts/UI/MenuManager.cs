@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _mainView;
     [SerializeField] private GameObject _settingsView;
     private AudioManager _audioManager;
-    public Toggle musicToggle;
+    
 
     private void Awake()
     {
@@ -37,16 +37,6 @@ public class MenuManager : MonoBehaviour
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         _mainView.SetActive(false);
         _settingsView.SetActive(true);
-        if (musicToggle != null)
-        {
-            bool isMute = _audioManager.IsMute();
-            if (musicToggle.isOn != isMute)
-            {
-                musicToggle.isOn = isMute;
-            }
-        }
-
-
     }
 
     public void ReturnClicked()
@@ -66,7 +56,7 @@ public class MenuManager : MonoBehaviour
     
     
     Vector2Int rez = new Vector2Int(1920, 1080);
-    public void ToggleFullScreen()
+    public void FullScreen()
     {
         _audioManager.PlaySFX(_audioManager.ButtonCLicked);
         FullScreenMode mode;
@@ -86,8 +76,10 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void MusicToggle()
+    public void Music()
     {
+        _audioManager.PlaySFX(_audioManager.ButtonCLicked);
+
         if(_audioManager.IsMute() == false)
         {
             _audioManager.MuteMusic();
