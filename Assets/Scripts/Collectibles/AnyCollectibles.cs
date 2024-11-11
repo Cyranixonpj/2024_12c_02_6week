@@ -11,7 +11,10 @@ namespace Collectibles
 
         private void OnTriggerEnter2D(Collider2D otherObject)
         {
-            Collect();
+            if (otherObject.CompareTag("Player"))
+            {
+                Collect();
+            }
         }
     }
 }
