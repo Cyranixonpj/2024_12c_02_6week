@@ -56,6 +56,9 @@ TagManager:
   - name: Background
     uniqueID: 4168254749
     locked: 0
+  - name: Clouds
+    uniqueID: 3755177347
+    locked: 0
   - name: BackgroundDeco
     uniqueID: 2413057579
     locked: 0
