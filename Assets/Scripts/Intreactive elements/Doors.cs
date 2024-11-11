@@ -49,13 +49,13 @@ public class Doors : MonoBehaviour
     {
         if (isReturnDoors)
         {
-            yield return new WaitForSeconds(2f);
-            other.transform.position = new Vector3(teleportTo.transform.position.x+offTeleport, teleportTo.transform.position.y);
+            yield return new WaitForSeconds(1f);
+            other.transform.position = new Vector3(teleportTo.transform.position.x+offTeleport, teleportTo.transform.position.y-1);
         }
         else
         {
-            yield return new WaitForSeconds(2f);
-            other.transform.position = new Vector3(teleportTo.transform.position.x+offTeleport, teleportTo.transform.position.y);
+            yield return new WaitForSeconds(1f);
+            other.transform.position = new Vector3(teleportTo.transform.position.x+offTeleport, teleportTo.transform.position.y-1);
         }
     }
    
