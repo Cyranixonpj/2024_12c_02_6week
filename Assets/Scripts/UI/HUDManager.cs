@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine.UI;
@@ -126,7 +127,9 @@ public class HUDManager : MonoBehaviour
 
     private void LevelStats()
     {
-        _timeText.text = _levelTimer.GetTime().ToString("F2");
+        // _timeText.text = _levelTimer.GetTime().ToString("F2");
+        TimeSpan timeSpan = TimeSpan.FromSeconds(_levelTimer.GetTime());
+        _timeText.text = string.Format("{0:D2}:{1:D2}:{2:D3}", timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
         _goldCoinTextEND.text = _playerCollectibles._goldCoinCounter + "/" + _goldCoinCounter;
         _silverCoinTextEND.text = _playerCollectibles._silverCoinCounter + "/" + _silverCoinCounter;
         _diamondTextEND.text = _playerCollectibles._diamondCounter + "/" + _diamondCounter;
