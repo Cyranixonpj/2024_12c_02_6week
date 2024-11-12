@@ -12,6 +12,7 @@ public class PlayerCollectibles : MonoBehaviour
     public TMP_Text _diamondText;
     public int _keyCounter;
     public TMP_Text _keyText;
+    public int _keyCounterForPlayer;
 
    
 
@@ -71,19 +72,20 @@ public class PlayerCollectibles : MonoBehaviour
     private void AddKey()
     {
         _keyCounter += 1;
+        _keyCounterForPlayer += 1;
         _keyText.text = _keyCounter.ToString();
     }
     public int GetKeyCount()
     {
-        return _keyCounter;
+        return _keyCounterForPlayer;
     }
     public void UseKey()
     {
-        _keyCounter -= 1;
+        _keyCounterForPlayer -= 1;
     }
 
     public bool HasKey()
     {
-        return _keyCounter > 0;
+        return _keyCounterForPlayer > 0;
     }
 }
